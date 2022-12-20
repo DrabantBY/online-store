@@ -3,6 +3,7 @@ import { CheckBoxFilter } from '../Filters/CheckBoxFilter';
 import goods from '../../goods.json';
 import { useQueryParams } from '../../hooks/useQueryParams';
 import { filterByQueryParams } from '../../utils/filterByQueryParams';
+import { SearchField } from '../Filters/SearchField';
 
 import styles from './styles.module.scss';
 
@@ -13,10 +14,11 @@ export const Goods = () => {
   return (
     <div className={styles.goods}>
       <aside className={styles.goods__sidebar}>
+        <SearchField />
         <CheckBoxFilter currentGoods={goodsByFilter} flag="category" />
         <CheckBoxFilter currentGoods={goodsByFilter} flag="brand" />
       </aside>
-      <ArticleList goods={goodsByFilter} />;
+      <ArticleList goods={goodsByFilter} />
     </div>
   );
 };

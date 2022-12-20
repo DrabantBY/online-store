@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 export const ArticleList = (props: { goods: Product[] }) => {
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {};
-
   return (
     <ul>
       {props.goods.map((article) => (
