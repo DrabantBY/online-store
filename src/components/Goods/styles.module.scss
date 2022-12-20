@@ -1,0 +1,10 @@
+.goods {
+  display: flex;
+  gap: 20px;
+
+  &__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

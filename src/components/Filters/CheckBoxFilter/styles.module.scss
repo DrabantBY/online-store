@@ -1,0 +1,30 @@
+.filter {
+  &__title {
+    margin-bottom: 15px;
+  }
+
+  &__list {
+    overflow: auto;
+    max-height: 200px;
+    display: grid;
+    flex-direction: column;
+    gap: 10px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+  }
+}
