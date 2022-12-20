@@ -1,6 +1,8 @@
 import { useSearchParams } from 'react-router-dom';
 import { updateCategoryBrandParams } from '../utils/updateCategoryBrandParams';
 import { getQueryParams } from '../utils/getQueryParams';
+import type { QueryParams } from '../types';
+import { updateSearchParams } from '../utils/updateSearchParams';
 
 export const useQueryParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -10,11 +12,23 @@ export const useQueryParams = () => {
       case flag === 'category' || flag === 'brand':
         updateCategoryBrandParams(searchParams, flag, value);
         break;
+      case flag === 'search':
+        updateSearchParams(searchParams, value);
+        break;
     }
     setSearchParams(searchParams);
   };
 
   const queryParams = getQueryParams(searchParams);
 
-  return { queryParams, setQueryParams };
+  const isChecked = (flag: string, value: string) => {
+    if (queryParams) {
+      return queryParams[flag as keyof QueryParams]?.split('~').includes(value);
+    }
+    return false;
+  };
+
+  const searchValue = searchParams.get('search') || '';
+
+  return { queryParams, searchValue, isChecked, setQueryParams };
 };
