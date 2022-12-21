@@ -1,4 +1,5 @@
 import type { Product, QueryParams } from '../types';
+import { sortByFilter } from '../helpers/sortByFilter';
 
 const filterByCategory = (article: Product, value: string | undefined) =>
   !value || value.split('~').includes(article.category);
@@ -18,11 +19,14 @@ const filterBySearch = (article: Product, value: string | undefined) => {
   );
 };
 
-export const isFound = (article: Product, queryParams: QueryParams) => {
+const isFound = (article: Product, queryParams: QueryParams) => {
   const { category, brand, search } = queryParams;
   return filterByCategory(article, category) && filterByBrand(article, brand) && filterBySearch(article, search);
 };
 
 export const filterByQueryParams = (goods: Product[], queryParams: QueryParams) => {
-  return goods.filter((article) => isFound(article, queryParams));
+  const { sort } = queryParams;
+  const goodsByFilter = goods.filter((article) => isFound(article, queryParams));
+  sortByFilter(goodsByFilter, sort);
+  return goodsByFilter;
 };

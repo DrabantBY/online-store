@@ -4,6 +4,7 @@ import goods from '../../goods.json';
 import { useQueryParams } from '../../hooks/useQueryParams';
 import { filterByQueryParams } from '../../utils/filterByQueryParams';
 import { SearchField } from '../Filters/SearchField';
+import { SortField } from '../Filters/SortField';
 
 import styles from './styles.module.scss';
 
@@ -17,6 +18,7 @@ export const Goods = () => {
         <SearchField />
         <CheckBoxFilter currentGoods={goodsByFilter} flag="category" />
         <CheckBoxFilter currentGoods={goodsByFilter} flag="brand" />
+        <SortField />
       </aside>
       <ArticleList goods={goodsByFilter} />
     </div>

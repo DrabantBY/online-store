@@ -2,7 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 import { updateCategoryBrandParams } from '../utils/updateCategoryBrandParams';
 import { getQueryParams } from '../utils/getQueryParams';
 import type { QueryParams } from '../types';
-import { updateSearchParams } from '../utils/updateSearchParams';
+import { updateSearchSortParams } from '../utils/updateSearchSortParams';
 
 export const useQueryParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -12,8 +12,8 @@ export const useQueryParams = () => {
       case flag === 'category' || flag === 'brand':
         updateCategoryBrandParams(searchParams, flag, value);
         break;
-      case flag === 'search':
-        updateSearchParams(searchParams, value);
+      case flag === 'search' || flag === 'sort':
+        updateSearchSortParams(searchParams, flag, value);
         break;
     }
     setSearchParams(searchParams);
@@ -29,6 +29,7 @@ export const useQueryParams = () => {
   };
 
   const searchValue = searchParams.get('search') || '';
+  const sortValue = searchParams.get('sort') || '';
 
-  return { queryParams, searchValue, isChecked, setQueryParams };
+  return { queryParams, searchValue, sortValue, isChecked, setQueryParams };
 };

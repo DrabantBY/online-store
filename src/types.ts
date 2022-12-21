@@ -16,4 +16,5 @@ export interface QueryParams {
   category?: string;
   brand?: string;
   search?: string;
+  sort?: string;
 }
