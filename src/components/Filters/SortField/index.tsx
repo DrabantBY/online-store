@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useQueryParams } from '../../../hooks/useQueryParams';
+import styles from './styles.module.scss';
 
 export const SortField = () => {
   const { sortValue, setQueryParams } = useQueryParams();
@@ -12,14 +13,12 @@ export const SortField = () => {
   };
 
   return (
-    <div>
-      <select name="sort" onChange={handleChange} value={select}>
-        <option value="">-sort option-</option>
-        <option value="rating-asc">sort asc by rating</option>
-        <option value="rating-desc">sort desc by rating</option>
-        <option value="price-asc">sort asc by price</option>
-        <option value="price-desc">sort desc by price</option>
-      </select>
-    </div>
+    <select name="sort" onChange={handleChange} value={select}>
+      <option value="">--- sort option ---</option>
+      <option value="rating-asc">sort asc by rating</option>
+      <option value="rating-desc">sort desc by rating</option>
+      <option value="price-asc">sort asc by price</option>
+      <option value="price-desc">sort desc by price</option>
+    </select>
   );
 };

@@ -2,24 +2,23 @@ import { useSearchParams } from 'react-router-dom';
 import { updateCategoryBrandParams } from '../utils/updateCategoryBrandParams';
 import { getQueryParams } from '../utils/getQueryParams';
 import type { QueryParams } from '../types';
-import { updateSearchSortParams } from '../utils/updateSearchSortParams';
+import { updateParams } from '../utils/updateParams';
 
 export const useQueryParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const queryParams = getQueryParams(searchParams);
 
   const setQueryParams = (flag: string, value: string) => {
     switch (true) {
       case flag === 'category' || flag === 'brand':
         updateCategoryBrandParams(searchParams, flag, value);
         break;
-      case flag === 'search' || flag === 'sort':
-        updateSearchSortParams(searchParams, flag, value);
-        break;
+      default:
+        updateParams(searchParams, flag, value);
     }
     setSearchParams(searchParams);
   };
-
-  const queryParams = getQueryParams(searchParams);
 
   const isChecked = (flag: string, value: string) => {
     if (queryParams) {
@@ -30,6 +29,7 @@ export const useQueryParams = () => {
 
   const searchValue = searchParams.get('search') || '';
   const sortValue = searchParams.get('sort') || '';
+  const viewValue = searchParams.get('view') || 'block';
 
-  return { queryParams, searchValue, sortValue, isChecked, setQueryParams };
+  return { queryParams, searchValue, sortValue, viewValue, isChecked, setQueryParams, setSearchParams };
 };
