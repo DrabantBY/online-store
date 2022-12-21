@@ -6,13 +6,11 @@ import { filterByQueryParams } from '../../utils/filterByQueryParams';
 import { SearchField } from '../Filters/SearchField';
 import { SortField } from '../Filters/SortField';
 import { ViewToggler } from '../Filters/ViewToggler';
-import { useLocation } from 'react-router-dom';
-
+import { CopyUrl } from '../Filters/CopyUrl';
 import styles from './styles.module.scss';
 
 export const Goods = () => {
   const { queryParams, setSearchParams } = useQueryParams();
-  const location = useLocation();
   const goodsByFilter = queryParams ? filterByQueryParams(goods, queryParams) : goods;
 
   return (
@@ -27,7 +25,7 @@ export const Goods = () => {
         <button type="button" onClick={() => setSearchParams()}>
           Reset Filters
         </button>
-        <button type="button">copy link</button>
+        <CopyUrl />
       </aside>
       <ArticleList goods={goodsByFilter} />
     </div>
