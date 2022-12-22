@@ -27,6 +27,5 @@ const isFound = (article: Product, queryParams: QueryParams) => {
 export const filterByQueryParams = (goods: Product[], queryParams: QueryParams) => {
   const { sort } = queryParams;
   const goodsByFilter = goods.filter((article) => isFound(article, queryParams));
-  sortByFilter(goodsByFilter, sort);
-  return goodsByFilter;
+  return sortByFilter(goodsByFilter, sort);
 };
