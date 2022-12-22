@@ -1,8 +1,8 @@
 import type { QueryParams } from '../types';
 
 export const getQueryParams = (searchParams: URLSearchParams) => {
-  if (searchParams.toString()) {
-    const queryParams: QueryParams = Object.create(null);
+  if (!searchParams.toString()) return null;
+    const queryParams: QueryParams = {};
     searchParams
       .toString()
       .split('&')
@@ -10,6 +10,5 @@ export const getQueryParams = (searchParams: URLSearchParams) => {
       .flat()
       .forEach((key) => (queryParams[key as keyof QueryParams] = decodeURI(searchParams.get(key)!)));
     return queryParams;
-  }
-  return null;
+  
 };

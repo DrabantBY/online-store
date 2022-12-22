@@ -1,11 +1,15 @@
 import { useQueryParams } from '../../../hooks/useQueryParams';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import styles from './styles.module.scss';
 
 export const SearchField = () => {
   const { searchValue, setQueryParams } = useQueryParams();
   const [value, setValue] = useState(searchValue);
+
+  useEffect(() => {
+    setValue(searchValue);
+  }, [searchValue]);
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();

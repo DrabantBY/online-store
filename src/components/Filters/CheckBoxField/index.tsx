@@ -1,14 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useQueryParams } from '../../../hooks/useQueryParams';
 import styles from './styles.module.scss';
 
 export const CheckBoxField = (props: { flag: string; value: string; current: number; total: number }) => {
   const { flag, value, current, total } = props;
   const { isChecked, setQueryParams } = useQueryParams();
-  const [checked, setChecked] = useState(isChecked(flag, value));
+  const initState = isChecked(flag, value);
+  const [checked, setChecked] = useState(initState);
+
+  useEffect(() => {
+    setChecked(initState);
+  }, [initState]);
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setChecked(e.target.checked);
     setQueryParams(flag, value);
   };
 

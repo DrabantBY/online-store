@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useQueryParams } from '../../../hooks/useQueryParams';
 import styles from './styles.module.scss';
 
@@ -6,9 +6,12 @@ export const SortField = () => {
   const { sortValue, setQueryParams } = useQueryParams();
   const [select, setSelect] = useState(sortValue);
 
+  useEffect(() => {
+    setSelect(sortValue);
+  }, [sortValue]);
+
   const handleChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
     const { value } = e.target;
-    setSelect(value);
     setQueryParams('sort', value);
   };
 

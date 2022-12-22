@@ -21,10 +21,8 @@ export const useQueryParams = () => {
   };
 
   const isChecked = (flag: string, value: string) => {
-    if (queryParams) {
-      return queryParams[flag as keyof QueryParams]?.split('~').includes(value);
-    }
-    return false;
+    if (!queryParams) return false;
+    return queryParams[flag as keyof QueryParams]?.split('~').includes(value) ?? false;
   };
 
   const searchValue = searchParams.get('search') || '';
