@@ -17,4 +17,12 @@ export interface QueryParams {
   brand?: string;
   search?: string;
   sort?: string;
+  view?: string;
+  price?: string;
+  rating?: string;
+}
+
+export interface Cart {
+  id: number;
+  amount: number;
 }

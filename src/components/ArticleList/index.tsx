@@ -6,8 +6,6 @@ import styles from './styles.module.scss';
 export const ArticleList = (props: { goods: Product[] }) => {
   const { viewValue } = useQueryParams();
 
-  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {};
-
   return (
     <ul className={styles[`cards-${viewValue}`]}>
       {props.goods.map((article) => (
@@ -17,17 +15,15 @@ export const ArticleList = (props: { goods: Product[] }) => {
               <img src={article.thumbnail} alt="article icon"></img>
               <figcaption>{article.title}</figcaption>
             </figure>
-            <div>
-              <span>{article.price}$</span>
-              <span>stock: {article.stock}</span>
-              <span>rating: {article.rating}</span>
-            </div>
-            <div>
-              <button type="button" onClick={handleClick}>
-                add to Cart
-              </button>
-            </div>
           </Link>
+          <div>
+            <span>{article.price}$</span>
+            <span>stock: {article.stock}</span>
+            <span>rating: {article.rating}</span>
+          </div>
+          <div>
+            <button type="button">add to Cart</button>
+          </div>
         </li>
       ))}
     </ul>
