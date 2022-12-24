@@ -1,10 +1,15 @@
-import type { Product } from '../../types';
+import type { Product, Cart } from '../../types';
 import { Link } from 'react-router-dom';
 import { useQueryParams } from '../../hooks/useQueryParams';
+import useLocalStorageState from 'use-local-storage-state';
 import styles from './styles.module.scss';
+import { addToCart, removeFromCart, isInCart } from '../../helpers/handleCart';
 
 export const ArticleList = (props: { goods: Product[] }) => {
   const { viewValue } = useQueryParams();
+  const [cartState, setCartState] = useLocalStorageState('cart', {
+    defaultValue: [] as Cart[],
+  });
 
   return (
     <ul className={styles[`cards-${viewValue}`]}>
@@ -22,7 +27,17 @@ export const ArticleList = (props: { goods: Product[] }) => {
             <span>rating: {article.rating}</span>
           </div>
           <div>
-            <button type="button">add to Cart</button>
+            <button
+              type="button"
+              onClick={() => {
+                const data = { id: article.id, amount: 1 };
+                const newCartState = isInCart(cartState, article.id)
+                  ? removeFromCart(cartState, article.id)
+                  : addToCart(cartState, data);
+                setCartState(newCartState);
+              }}>
+              {isInCart(cartState, article.id) ? 'Remove from Cart' : 'Add to Cart'}
+            </button>
           </div>
         </li>
       ))}
