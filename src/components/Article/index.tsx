@@ -1,4 +1,3 @@
-import type { Product } from '../../types';
 import { useParams, Link } from 'react-router-dom';
 import goods from '../../goods.json';
 import { useState } from 'react';

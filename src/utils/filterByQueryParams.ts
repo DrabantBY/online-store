@@ -19,9 +19,23 @@ const filterBySearch = (article: Product, value: string | undefined) => {
   );
 };
 
+const filterByRange = (article: Product, value: string | undefined, flag: 'price' | 'rating') => {
+  if (value) {
+    const [min, max] = value.split('~').map(Number);
+    return min <= article[flag] && article[flag] <= max;
+  }
+  return true;
+};
+
 const isFound = (article: Product, queryParams: QueryParams) => {
-  const { category, brand, search } = queryParams;
-  return filterByCategory(article, category) && filterByBrand(article, brand) && filterBySearch(article, search);
+  const { category, brand, search, price, rating } = queryParams;
+  return (
+    filterByCategory(article, category) &&
+    filterByBrand(article, brand) &&
+    filterBySearch(article, search) &&
+    filterByRange(article, price, 'price') &&
+    filterByRange(article, rating, 'rating')
+  );
 };
 
 export const filterByQueryParams = (goods: Product[], queryParams: QueryParams) => {
