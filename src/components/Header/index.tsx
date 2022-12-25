@@ -8,6 +8,7 @@ export const Header = () => {
   const [cartState] = useLocalStorageState('cart');
   const { total, amount } = getFromCart(cartState as CartItem[]);
 
+
   return (
     <div className={styles.header}>
       <div className={styles.header__container}>
