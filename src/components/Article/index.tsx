@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import goods from '../../goods.json';
 import { useState } from 'react';
+import { Product } from '../../types';
 import './article.scss';
 
 export const Article = (props: {elemId?: number; elemName?: string}) => {

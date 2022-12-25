@@ -3,20 +3,17 @@ import { Link } from 'react-router-dom';
 import { useQueryParams } from '../../hooks/useQueryParams';
 import useLocalStorageState from 'use-local-storage-state';
 import styles from './styles.module.scss';
-
+import { addToCart, removeFromCart, isInCart } from '../../helpers/handleCart';
 import { Article } from '../Article';
 import './articlelist.scss';
 
-export const ArticleList = (props: { goods: Product[] }) => {
-  const { viewValue } = useQueryParams();
-  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {};
-import { addToCart, removeFromCart, isInCart } from '../../helpers/handleCart';
 
 export const ArticleList = (props: { goods: Product[] }) => {
   const { viewValue } = useQueryParams();
   const [cartState, setCartState] = useLocalStorageState('cart', {
     defaultValue: [] as Cart[],
   });
+  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {};
 
   return (
     <ul className={styles[`card-${viewValue}`]}>
