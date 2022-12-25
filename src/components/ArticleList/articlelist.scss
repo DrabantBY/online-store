@@ -1,0 +1,120 @@
+@import '../../style-import.scss';
+.li-card {
+  & .container-card-block {
+    width: 100%;
+    height: 100%;
+    & figure {
+      height: 70%;
+      & div {
+        height: 20%;
+        & .article-title {
+          margin-right: 10px;
+          @extend %Heading18RegularText;
+          font-size: 14px
+        }
+        & .article-brand {
+          @extend %Heading12Thin;
+        }
+      }
+
+      & img{
+        width: 100%;
+        height: 70%;
+        object-fit: fill;
+        overflow: hidden;
+        font-size: 0px;
+        padding: 0px;
+        margin: 0px;
+      }
+    }
+    .article-container-price {
+      display: flex;
+      align-items: flex-end;
+      padding: 5px;
+      .article-price-new {
+        @extend %Heading12Thin;
+        margin-right: 5px;
+      }
+      .article-price-old {
+        @extend %Heading12Thin;
+        color: rgb(192, 11, 11);
+        text-decoration: line-through;
+        position: relative;
+        bottom: 10px;
+        margin-right: 10px;
+      }
+      .article-price-discount {
+        @extend %Heading12Thin;
+        background-color: rgb(192, 11, 11);
+        padding: 2px 5px 2px 5px;
+        border-radius: 5px;
+        color: rgb(240, 227, 212);
+      }
+    }
+    .article-container-stock-rating {
+      display: flex;
+      flex-direction: column;
+      padding: 5px;
+    }
+    .article-stock {
+      @extend %Heading12Thin;
+    }
+    .article-rating {
+      @extend %Heading12Thin;
+    }
+  }
+}
+@media (max-width: 1000px) {
+  .li-card {
+    & .container-card-block {
+      width: 100%;
+      height: 100%;
+      & figure {
+        height: 60%;
+
+        .article-brand {
+          display: none;
+        }
+      }   
+    } 
+  }
+}
+@media (max-width: 1000px) {
+  .li-card {
+    & .container-card-block {
+      width: 100%;
+      height: 100%;
+      & figure {
+        height: 60%;
+
+        .article-brand {
+          display: none;
+        }
+      }   
+    } 
+  }
+}
+@media (max-width: 800px) {
+  .li-card {
+    & .container-card-block {
+      .article-container-price {
+        .article-price-new {
+          font-size: 10px;
+          margin-right: 2px;
+        }
+        .article-price-old {
+          font-size: 10px;
+        }
+        .article-price-discount {
+          font-size: 8px;
+        }
+      }
+      .article-stock {
+        font-size: 8px;
+      }
+      .article-rating {
+        font-size: 8px;
+      }
+    }
+  }
+}
