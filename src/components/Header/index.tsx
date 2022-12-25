@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import type { Cart } from '../../types';
+import type { CartItem } from '../../types';
 import styles from './styles.module.scss';
 import useLocalStorageState from 'use-local-storage-state';
 import { getFromCart } from '../../helpers/handleCart';
 
 export const Header = () => {
   const [cartState] = useLocalStorageState('cart');
-  const { total, amount } = getFromCart(cartState as Cart[]);
+  const { total, amount } = getFromCart(cartState as CartItem[]);
 
   return (
     <div className={styles.header}>

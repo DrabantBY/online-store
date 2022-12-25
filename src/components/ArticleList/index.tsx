@@ -1,4 +1,4 @@
-import type { Product, Cart } from '../../types';
+import type { Product, CartItem } from '../../types';
 import { Link } from 'react-router-dom';
 import { useQueryParams } from '../../hooks/useQueryParams';
 import useLocalStorageState from 'use-local-storage-state';
@@ -8,7 +8,7 @@ import { addToCart, removeFromCart, isInCart } from '../../helpers/handleCart';
 export const ArticleList = (props: { goods: Product[] }) => {
   const { viewValue } = useQueryParams();
   const [cartState, setCartState] = useLocalStorageState('cart', {
-    defaultValue: [] as Cart[],
+    defaultValue: [] as CartItem[],
   });
 
   return (
