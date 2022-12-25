@@ -1,26 +1,31 @@
-import type { Cart } from '../types';
+
+import type { CartItem, CartProduct } from '../types';
 import goods from '../goods.json';
 
-export const removeFromCart = (cartState: Cart[], id: number) => cartState.filter((item) => item.id !== id);
+export const removeFromCart = (cartState: CartItem[], id: number) => cartState.filter((item) => item.id !== id);
 
-export const isInCart = (cartState: Cart[], id: number) => cartState.some((item) => item.id === id);
+export const isInCart = (cartState: CartItem[], id: number) => cartState.some((item) => item.id === id);
 
-export const addToCart = (cartState: Cart[], data: Cart) => {
+export const addToCart = (cartState: CartItem[], data: CartItem) => {
+
+
   if (!cartState.length) return data.amount > 0 ? [data] : [];
 
   const element = cartState.find((item) => item.id === data.id);
 
-  if (!element) return [...cartState, data];
+  if (!element) return [...cartState, data].sort((a, b) => a.id - b.id);
+
 
   const { amount } = element;
   data.amount += amount;
   const result = cartState.filter((item) => item.id !== data.id);
 
-  return data.amount ? [...result, data] : result;
+  return data.amount ? [...result, data].sort((a, b) => a.id - b.id) : result;
 };
 
-export const getFromCart = (cart: Cart[]) => {
-  if (!cart.length) return { total: 0, amount: 0 };
+export const getFromCart = (cart: CartItem[]) => {
+  if (!cart?.length) return { total: 0, amount: 0 };
+
 
   return cart.reduce(
     (acc, item) => {
@@ -33,3 +38,23 @@ export const getFromCart = (cart: Cart[]) => {
     { total: 0, amount: 0 }
   );
 };
+
+export const getGoodsCartPerPage = (cartState: CartItem[] | null, page: number, limit: number) => {
+  if (!cartState) return [0, []];
+
+  const pageNumber = Math.ceil(cartState.length / limit);
+  const slicePoint = page * limit;
+  const startSlicePoint = slicePoint - limit;
+
+  const goodsCart = cartState.map((item, index) => {
+    const article = goods.find((article) => article.id === item.id)!;
+    const { amount } = item;
+    return { article, amount, index };
+  });
+
+  const goodsCartPerPage: CartProduct[] =
+    page === pageNumber ? goodsCart.slice(startSlicePoint) : goodsCart.slice(startSlicePoint, slicePoint);
+
+  return [pageNumber, goodsCartPerPage];
+};
+

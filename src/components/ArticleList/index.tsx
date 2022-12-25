@@ -1,4 +1,4 @@
-import type { Product, Cart } from '../../types';
+import type { Product, CartItem } from '../../types';
 import { Link } from 'react-router-dom';
 import { useQueryParams } from '../../hooks/useQueryParams';
 import useLocalStorageState from 'use-local-storage-state';
@@ -11,9 +11,11 @@ import './articlelist.scss';
 export const ArticleList = (props: { goods: Product[] }) => {
   const { viewValue } = useQueryParams();
   const [cartState, setCartState] = useLocalStorageState('cart', {
-    defaultValue: [] as Cart[],
+
+    defaultValue: [] as CartItem[],
   });
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {};
+
 
   return (
     <ul className={styles[`card-${viewValue}`]}>
@@ -28,6 +30,10 @@ export const ArticleList = (props: { goods: Product[] }) => {
                 <span className='article-brand'>{`by ${article.brand}`}</span>
               </div>
               <img src={article.thumbnail} alt="article icon"></img>
+
+              <figcaption>{article.title}</figcaption>
+            </figure>
+
               </figure>
               <div>
               <div className='article-container-price'>
@@ -54,6 +60,7 @@ export const ArticleList = (props: { goods: Product[] }) => {
             </div>
             : <Article elemId = {article.id} elemName = {'cardLost'} />
             }  
+
 
           </Link>
           <div>
