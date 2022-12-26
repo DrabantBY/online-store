@@ -46,6 +46,7 @@ export const ArticleList = (props: { goods: Product[] }) => {
               </div>
               <div className='article-list-container-button'>
                 <button
+                  className = {(isInCart(cartState, article.id)) ? 'article-list-active': 'article-list-default'} 
                   type="button"
                   onClick={() => {
                     const data = { id: article.id, amount: 1 };
