@@ -1,0 +1,29 @@
+@import '../../style-import.scss';
+.header {
+  background-color: #7F8C8D;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90%;
+    width: 95%;
+    .header-name{
+      margin: 0px;
+      @extend %Heading48BoldBlack;
+    }
+    .header-total{
+      @extend %Heading18RegularText;
+    }
+    .header-container-cart{
+      display: flex;
+      align-items: center;
+      .header-cart-count{
+        @extend %Heading18Light;
+      }
+    }
+  }
+}

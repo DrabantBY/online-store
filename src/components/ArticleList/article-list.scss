@@ -24,7 +24,7 @@
       & img{
         width: 100%;
         height: 90%;
-        object-fit: fill;
+        object-fit:cover;
         overflow: hidden;
         font-size: 0px;
         padding: 0px;
@@ -87,6 +87,9 @@
         &:last-child {
           background-color: #7F8C8D;
         }
+      }
+      .article-list-active{
+        background-color: #499499;
       }
     }
   }

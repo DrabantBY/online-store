@@ -1,7 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
 import goods from '../../goods.json';
 import { useState } from 'react';
-import { Product } from '../../types';
+import { Product, CartItem  } from '../../types';
+import useLocalStorageState from 'use-local-storage-state';
+import { addToCart, removeFromCart, isInCart } from '../../helpers/handleCart';
 import './article.scss';
 
 export const Article = (props: {elemId?: number; elemName?: string}) => {
@@ -13,6 +15,9 @@ export const Article = (props: {elemId?: number; elemName?: string}) => {
   }else{
     resID = Number(id);
   }
+  const [cartState, setCartState] = useLocalStorageState('cart', {
+    defaultValue: [] as CartItem[],
+  });
   
   const article = goods.find((article) => article.id === resID);
   const [indexImg, setIndexImg] = useState(0);
@@ -66,16 +71,36 @@ export const Article = (props: {elemId?: number; elemName?: string}) => {
           </p>
           <p className='article-description'>{description}</p>
           <div className='article-container-button'>
-            <button className='article-button-add'>
-              <span>add to card</span>
+            <button                   
+              className = {(isInCart(cartState, resID)) ? 'article-list-active': 'article-list-default'} 
+              type="button"
+              onClick={() => {
+                const data = { id: resID, amount: 1 };
+                const newCartState = isInCart(cartState, resID)
+                  ? removeFromCart(cartState, resID)
+                  : addToCart(cartState, data);
+                    setCartState(newCartState);
+                }}>
+                {isInCart(cartState, resID) ? <span>Remove from Cart</span> : <span>Add to Cart</span>}
             </button>
-            <button className='article-button-buy'>
-              <span>but now</span>
-            </button>
+            {!elemName ?
+              <button className='article-button-buy'>
+                <span>buy now</span>
+              </button>
+              :null
+            }
             {!elemName ?
               <button className='article-button-back'>
                 <Link to={`/`}>
                   <span>back</span>
+                </Link>
+              </button>
+              : null
+            }
+            {elemName ?
+              <button className='article-button-back'>
+                <Link to={`${resID}`}>
+                  <span>Details</span>
                 </Link>
               </button>
               : null

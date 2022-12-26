@@ -107,17 +107,17 @@
       display: flex;
       flex-direction: column;
       width: 50%;
-      .article-button-add{
+      & button{
         @extend %button;
       }
-   
+      .article-list-active{
+        background-color: #499499;
+      }
       .article-button-buy{
         margin-top: 10px;
-        @extend %button;
       }
       .article-button-back{
         margin-top: 10px;
-        @extend %button;
         background-color: #7F8C8D;
       }
     }

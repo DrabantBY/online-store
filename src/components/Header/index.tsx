@@ -1,20 +1,23 @@
 import { Link } from 'react-router-dom';
 import type { CartItem } from '../../types';
-import styles from './styles.module.scss';
 import useLocalStorageState from 'use-local-storage-state';
 import { getFromCart } from '../../helpers/handleCart';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import './styles.scss';
 
 export const Header = () => {
   const [cartState] = useLocalStorageState('cart');
   const { total, amount } = getFromCart(cartState as CartItem[]);
 
   return (
-    <div className={styles.header}>
-      <div className={styles.header__container}>
-        <Link to={'/'}>go home</Link>
-        <span>total:&nbsp;{total}$</span>
-        <Link to={'cart'}> CartSVG</Link>
-        <span>{amount}</span>
+    <div className='header'>
+      <div className='header-container'>
+        <Link to={'/'}><h1 className='header-name'>Online Stor</h1></Link>
+        <span className='header-total'>{`total: ${total}$`}</span>
+        <Link to={'cart'} className="header-container-cart"> 
+          <span className='header-cart-count'>{amount}</span> 
+          <AiOutlineShoppingCart  fontSize="3em" color="#2C3E50"/>
+        </Link>
       </div>
     </div>
   );
