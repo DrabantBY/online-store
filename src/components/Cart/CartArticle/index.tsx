@@ -1,6 +1,7 @@
 import type { Product, CartItem } from '../../../types';
 import useLocalStorageState from 'use-local-storage-state';
 import { addToCart } from '../../../helpers/handleCart';
+import './style.scss';
 
 export const CartArticle = (props: { article: Product; index: number; amount: number }) => {
   const { article, index, amount } = props;

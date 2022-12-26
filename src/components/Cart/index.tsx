@@ -5,6 +5,7 @@ import { getGoodsCartPerPage } from '../../helpers/handleCart';
 import { CartArticle } from './CartArticle';
 import { CartPromo } from './CartPromo';
 import type { CartItem, CartProduct } from '../../types';
+import './style.scss';
 
 export const Cart = () => {
   const [cartState] = useLocalStorageState('cart');

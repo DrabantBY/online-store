@@ -10,11 +10,11 @@
     margin-top: 5px;
     & li {
       width: 27%;
-      height: 40vh;
-      border: 1px solid;
+      height: 60vh;
       background-color: #BDC3C7;
       border-radius: 5px;
       margin-bottom: 5px;
+      border: 1px solid grey;
     }
   }
 
@@ -26,4 +26,14 @@
       margin-top: 10px;
     }
   }
+}
+@media (max-width: 600px) {
+  .card {
+    &-block {
+      & li {
+        width: 40%;
+        height: 40vh;
+      }
+    }
+  }    
 }
