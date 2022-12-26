@@ -22,7 +22,6 @@ export interface QueryParams {
   rating?: string;
 }
 
-
 export interface CartItem {
   id: number;
   amount: number;
@@ -32,5 +31,4 @@ export interface CartProduct {
   article: Product;
   amount: number;
   index: number;
-
 }

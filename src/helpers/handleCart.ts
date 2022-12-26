@@ -1,4 +1,3 @@
-
 import type { CartItem, CartProduct } from '../types';
 import goods from '../goods.json';
 
@@ -7,14 +6,11 @@ export const removeFromCart = (cartState: CartItem[], id: number) => cartState.f
 export const isInCart = (cartState: CartItem[], id: number) => cartState.some((item) => item.id === id);
 
 export const addToCart = (cartState: CartItem[], data: CartItem) => {
-
-
   if (!cartState.length) return data.amount > 0 ? [data] : [];
 
   const element = cartState.find((item) => item.id === data.id);
 
   if (!element) return [...cartState, data].sort((a, b) => a.id - b.id);
-
 
   const { amount } = element;
   data.amount += amount;
@@ -25,7 +21,6 @@ export const addToCart = (cartState: CartItem[], data: CartItem) => {
 
 export const getFromCart = (cart: CartItem[]) => {
   if (!cart?.length) return { total: 0, amount: 0 };
-
 
   return cart.reduce(
     (acc, item) => {
@@ -57,4 +52,3 @@ export const getGoodsCartPerPage = (cartState: CartItem[] | null, page: number, 
 
   return [pageNumber, goodsCartPerPage];
 };
-
