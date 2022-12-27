@@ -1,5 +1,5 @@
 import { useQueryParams } from '../../../hooks/useQueryParams';
-import styles from './styles.module.scss';
+import './styles.scss';
 
 export const ViewToggler = () => {
   const { viewValue, setQueryParams } = useQueryParams();
@@ -10,8 +10,8 @@ export const ViewToggler = () => {
   };
 
   return (
-    <button type="button" onClick={handleClick}>
-      {viewValue}
+    <button className='toggle-button' type="button" onClick={handleClick}>
+      <span>{viewValue}</span>
     </button>
   );
 };

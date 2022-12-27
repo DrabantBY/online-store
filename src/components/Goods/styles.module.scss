@@ -1,10 +1,18 @@
+@import '../../style-import.scss';
 .goods {
   display: flex;
-  gap: 20px;
 
   &__sidebar {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    background-color: #95A5A6;
+    padding: 5px;
+  }
+  &__button_reset{
+    @extend %button;
+    & span{
+      font-size: 10px;
+    }
   }
 }

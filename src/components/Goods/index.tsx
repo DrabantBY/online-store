@@ -22,16 +22,16 @@ export const Goods = () => {
   return (
     <div className={styles.goods}>
       <aside className={styles.goods__sidebar}>
+        <ViewToggler />
         <SearchField />
         <SortField />
-        <ViewToggler />
         <CheckBoxFilter currentGoods={goodsByFilter} flag="category" />
         <CheckBoxFilter currentGoods={goodsByFilter} flag="brand" />
         <RangeField flag="price" />
         <RangeField flag="rating" />
         <p>{goodsByFilter.length === 0 ? 'Nothing found' : `total goods: ${goodsByFilter.length}`}</p>
-        <button type="button" onClick={resetFilters}>
-          Reset Filters
+        <button type="button" onClick={resetFilters} className={styles.goods__button_reset}>
+          <span>Reset Filters</span> 
         </button>
         <CopyUrl />
       </aside>

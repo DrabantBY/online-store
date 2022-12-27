@@ -1,0 +1,12 @@
+@import '../../../style-import.scss';
+.sort-field-select{
+  outline: 0;
+  background-color: transparent;
+  @extend %Heading18RegularText;
+    font-size: 12px;
+  & option {
+    @extend %Heading18RegularText;
+    font-size: 11px;
+    background-color: #7F8C8D;
+  } 
+}

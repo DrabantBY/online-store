@@ -1,0 +1,34 @@
+@import '../../../style-import.scss';
+.form-search{
+  display: flex;
+  justify-content: space-between;
+  .form-search__input{
+    width: 85%;
+    background-color: transparent;
+    outline: 0;
+    border: 2px solid #7F8C8D;
+    @extend %Heading18RegularText;
+    font-size: 12px;
+  }
+  .form-search__input:focus {
+    border: 2px solid #538083;
+    box-shadow: 0 0 1px 1px rgb(114, 132, 150);
+    outline: 0;
+    background-color: transparent;
+  }
+  .form-search__button{
+    background-color: transparent;
+    border: 2px solid #7F8C8D;
+    cursor: pointer;
+  }
+  .form-search__button:hover {
+    border: 2px solid #538083;
+  }
+  .form-search__button:active {
+    border: 2px solid #538083;
+    box-shadow: 0 0 1px 1px rgb(114, 132, 150);
+  }
+  .form-search__button::-moz-focus-inner {
+    border: 0;
+  }
+}

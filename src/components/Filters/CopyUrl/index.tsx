@@ -1,4 +1,5 @@
 import { useClipboard } from 'use-clipboard-copy';
+import './copy.scss';
 
 export const CopyUrl = () => {
   const clipboard = useClipboard({
@@ -6,8 +7,8 @@ export const CopyUrl = () => {
   });
 
   return (
-    <button onClick={() => clipboard.copy(window.location.href)}>
-      {clipboard.copied ? 'Link Copied!!!' : 'Copy Link'}
+    <button className='button-copy-url' onClick={() => clipboard.copy(window.location.href)}>
+      {clipboard.copied ? <span>Link Copied!!!</span>: <span>Copy Link</span>}
     </button>
   );
 };

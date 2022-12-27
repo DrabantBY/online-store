@@ -15,6 +15,7 @@ html,
 body {
   height: 100%;
   width: 100%;
+  background-color: #BDC3C7;
 }
 
 ul {
@@ -44,7 +45,6 @@ h4 {
 
 [class*='__container'] {
   max-width: 1240px;
-  padding: 0 20px;
   margin: 0 auto;
 }
 
