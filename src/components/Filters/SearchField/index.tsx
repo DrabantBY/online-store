@@ -1,7 +1,7 @@
 import { useQueryParams } from '../../../hooks/useQueryParams';
 import { useState, useEffect } from 'react';
-
-import styles from './styles.module.scss';
+import { BsSearch } from 'react-icons/bs';
+import './styles.scss';
 
 export const SearchField = () => {
   const { searchValue, setQueryParams } = useQueryParams();
@@ -18,9 +18,9 @@ export const SearchField = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="search" value={value} name="search" onChange={(e) => setValue(e.target.value)} />
-      <button type="submit">Search</button>
+    <form className='form-search' onSubmit={handleSubmit}>
+      <input className='form-search__input' type="search" value={value} placeholder="Search" name="search" onChange={(e) => setValue(e.target.value)} />
+      <button className='form-search__button' type="submit"><BsSearch /></button>
     </form>
   );
 };

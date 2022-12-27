@@ -1,14 +1,17 @@
+@import '../../../style-import.scss';
 .filter {
-  &__title {
+  .filter-title {
     margin-bottom: 15px;
+    @extend %Heading18RegularText;
+    font-size: 12px;
   }
 
-  &__list {
+  .filter-list {
     overflow: auto;
     max-height: 200px;
     display: grid;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
 
     &::-webkit-scrollbar {
       display: none;

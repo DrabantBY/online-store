@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useQueryParams } from '../../../hooks/useQueryParams';
-import styles from './styles.module.scss';
+import  './field.scss';
 
 export const CheckBoxField = (props: { flag: string; value: string; current: number; total: number }) => {
   const { flag, value, current, total } = props;
@@ -17,12 +17,12 @@ export const CheckBoxField = (props: { flag: string; value: string; current: num
   };
 
   return (
-    <li className={styles.filterItem}>
+    <li className='filterItem'>
       <label>
-        <input type="checkbox" checked={checked} onChange={handleChange} />
-        {value}
+        <input className='filterItem-checkbox' type="checkbox" checked={checked} onChange={handleChange} />
+        <span className='filterItem-name'>{value}</span>
       </label>
-      <span>
+      <span className='filterItem-value'>
         {current} | {total}
       </span>
     </li>
