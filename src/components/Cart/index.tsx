@@ -50,7 +50,7 @@ export const Cart = () => {
           <h2 className="cart__title"> Cart</h2>
           <div className="cart__pagination">
             <label className="cart__limit">
-              goods per page:
+              <span className="cart__limit-span"> goods per page:</span>
               <input
                 type="number"
                 value={value}

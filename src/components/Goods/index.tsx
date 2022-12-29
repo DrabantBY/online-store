@@ -35,7 +35,7 @@ export const Goods = () => {
         </button>
         <CopyUrl />
       </aside>
-      {goodsByFilter.length === 0 ? 'Goods not found' : <ArticleList goods={goodsByFilter} />}
+      {goodsByFilter.length === 0 ? <span className={styles.goods__sidebar__notfound}>Goods not found</span> : <ArticleList goods={goodsByFilter} />}
     </div>
   );
 };

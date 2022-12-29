@@ -8,6 +8,10 @@
     gap: 20px;
     background-color: #95A5A6;
     padding: 5px;
+    &__notfound{
+      margin: 10px;
+      @extend %Heading24BoldBlack;
+    }
   }
   &__button_reset{
     @extend %button;

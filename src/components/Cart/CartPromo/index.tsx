@@ -27,14 +27,14 @@ export const CartPromo = () => {
 
   return (
     <section className="promo">
-      <h2 className="promo__title">summary</h2>
-      <p className="promo__amount">goods: {amount}</p>
+      <h2 className="promo__title">Summary:</h2>
+      <p className="promo__amount">Goods: <span>{amount}</span></p>
       <p className="promo__sum">
-        total: <span className={sale ? 'old' : ''}>{total}$</span> {sale ? <span>{total - sale}$</span> : null}
+        Total: <span className={sale ? 'old' : ''}>{total}$</span> {sale ? <span>{total - sale}$</span> : null}
       </p>
       <form onSubmit={handleSubmit}>
         <label>
-          Promotion code:
+          <span>Promotion code:</span>
           <input
             type="text"
             name="promo"
@@ -43,7 +43,7 @@ export const CartPromo = () => {
             placeholder="promo-code-digit"
           />
         </label>
-        <button type="submit">use</button>
+        <button type="submit"><span>use</span></button>
       </form>
       {promoState.length ? (
         <ul>
@@ -57,7 +57,7 @@ export const CartPromo = () => {
           ))}
         </ul>
       ) : null}
-      <button type="button">buy now</button>
+      <button className='button-buy' type="button"><span>buy now</span></button>
     </section>
   );
 };
