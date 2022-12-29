@@ -18,7 +18,7 @@ export const Article = (props: {elemId?: number; elemName?: string}) => {
   const [cartState, setCartState] = useLocalStorageState('cart', {
     defaultValue: [] as CartItem[],
   });
-  
+
   const article = goods.find((article) => article.id === resID);
   const [indexImg, setIndexImg] = useState(0);
   const {
@@ -34,23 +34,44 @@ export const Article = (props: {elemId?: number; elemName?: string}) => {
   }: Product = article!;
   return (
     <div className="article-container">
-      <div className="article-container-image"> 
+      <div className="article-container-path-image">
+        {!elemName ? 
+          <div className="article-container-path">
+            <Link to={`/`}>
+              <span>Store</span>
+            </Link>
+            <span>{`>>`}</span>
+            <span>{`${category}`}</span>
+            <span>{`>>`}</span>
+            <span>{`${brand}`}</span>
+            <span>{`>>`}</span>
+            <span>{`${title}`}</span>
+          </div>
+          :null
+        }
+        <div className="article-container-image"> 
         {!elemName ? 
           <ul className='article-image-list'>
-          {images.map((element, index) => (
+          {Array.from(new Set(images)).map((element, index, array) => (
             <li className='article-list-elem' key={`article_img${index}`} onClick={() => {setIndexImg(index)}}>
               <img className='article-image-list-elem' src={element} alt="photo"/>
             </li>
           ))}
         </ul>
         :null
-      }
+        }
         <div className='article-container-main-image'>
           <div className='article-container-title'>
             <span className='article-title'>{title}</span>
             <span className='article-brand'>{`by ${brand}`}</span>
           </div>
-          <img className='article-main-image' src={images[indexImg]} alt="" />
+          {elemName ?
+            <Link to={`${resID}`}>
+              <img className='article-main-image' src={images[indexImg]} alt="" />
+            </Link>
+            : <img className='article-main-image' src={images[indexImg]} alt="" />
+          } 
+        </div>
         </div>
       </div>
       <div className='article-container-text'>

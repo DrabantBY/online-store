@@ -25,7 +25,11 @@ export const ArticleList = (props: { goods: Product[] }) => {
                   <span className='article-title'>{article.title}</span>
                   <span className='article-brand'>{`by ${article.brand}`}</span>
                 </div>
-                <img src={article.thumbnail} alt="article icon"></img>
+                <button>
+                  <Link to={`${article.id}`} className={styles[`card-${viewValue}Link`]}>
+                    <img src={article.thumbnail} alt="article icon"></img>
+                  </Link>
+                </button>
               </figure>
               <div>
               <div className='article-container-price'>

@@ -30,3 +30,24 @@
     }
   }
 }
+
+@media (max-width: 500px) {
+  .header {
+    height: 30px;
+    .header-container {
+      .header-name{
+        font-size: 18px;
+      }
+      .header-total{
+        @extend %Heading18RegularText;
+        font-size: 12px;
+      }
+      .header-container-cart{
+        .header-cart-count{
+          @extend %Heading18Light;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+ }

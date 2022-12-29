@@ -1,3 +1,75 @@
-.old {
-  text-decoration: line-through;
+@import '../../../style-import.scss';
+.promo{
+  .promo__title {
+    @extend %Heading18RegularText; 
+  }
+  .promo__amount {
+    @extend %Heading18RegularText;
+    font-size: 14px;
+    & span {
+      @extend %Heading24BoldBlack; 
+      font-size: 14px;
+    }
+  }
+  .promo__sum {
+    @extend %Heading18RegularText;
+    font-size: 14px;
+    & span {
+      @extend %Heading24BoldBlack; 
+      font-size: 14px;
+    }
+  }
+  form{
+    span {
+      @extend %Heading18RegularText;
+      font-size: 13px;
+    }
+    input {
+      background-color: transparent;
+      outline: 0;
+      border: 2px solid #677374;
+      @extend %Heading18RegularText;
+      font-size: 12px;
+      margin-right: 5px;
+      border-radius: 5px;
+    }
+    input:focus {
+      border: 2px solid #538083;
+      box-shadow: 0 0 1px 1px rgb(114, 132, 150);
+      outline: 0;
+      background-color: transparent;
+    }
+    button{
+      background-color: transparent;
+      border: 2px solid #677374;
+      cursor: pointer;
+      border-radius: 5px;
+      & span {
+        @extend %Heading18RegularText;
+        font-size: 12px;
+        padding: 0px 5px 0px 5px;
+      }
+    }
+    button:hover {
+      border: 2px solid #538083;
+    }
+    button:active {
+      border: 2px solid #538083;
+      box-shadow: 0 0 1px 1px rgb(114, 132, 150);
+    }
+  }
+  .button-buy{
+    margin-top: 5px;
+    @extend %button;
+    & span {
+      font-size: 14px;
+    }
+  }
+}
+@media (max-width: 800px) {
+  .promo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  } 
 }
