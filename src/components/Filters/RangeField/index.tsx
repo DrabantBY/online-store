@@ -1,17 +1,23 @@
 import ReactSlider from 'react-slider';
+import { useMemo } from 'react';
 import { useQueryParams } from '../../../hooks/useQueryParams';
+import { Product } from '../../../types';
+import { getMinMaxValue } from '../../../helpers/getMinMaxValue';
+import goods from '../../../goods.json';
 import styles from './styles.module.scss';
 
-export const RangeField = (props: { flag: 'price' | 'rating' }) => {
-  const { flag } = props;
+export const RangeField = (props: { currentGoods: Product[]; flag: 'price' | 'rating' }) => {
+  const { currentGoods, flag } = props;
+  const [minValue, maxValue] = useMemo(() => getMinMaxValue(currentGoods, flag), [currentGoods, flag]);
+  const [min, max] = useMemo(() => getMinMaxValue(goods, flag), [flag]);
   const { getRangeFilterValues, setQueryParams } = useQueryParams();
-  const [minValue, maxValue, min, max] = getRangeFilterValues(flag);
+  let values = getRangeFilterValues(flag);
 
   return (
     <div className={styles.slider}>
       <h2 className={styles.sliderTitle}>Filter by {flag}</h2>
       <ReactSlider
-        value={[minValue, maxValue]}
+        value={values ? [values[0], values[1]] : [minValue, maxValue]}
         className={styles.sliderBody}
         min={min}
         max={max}
@@ -24,8 +30,8 @@ export const RangeField = (props: { flag: 'price' | 'rating' }) => {
       />
 
       <div className={styles.sliderValue}>
-        <span>{minValue}</span>
-        <span>{maxValue}</span>
+        <span>{values ? values[0] : minValue}</span>
+        <span>{values ? values[1] : maxValue}</span>
       </div>
     </div>
   );

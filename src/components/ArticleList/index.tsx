@@ -7,7 +7,6 @@ import { addToCart, removeFromCart, isInCart } from '../../helpers/handleCart';
 import { Article } from '../Article';
 import './article-list.scss';
 
-
 export const ArticleList = (props: { goods: Product[] }) => {
   const { viewValue } = useQueryParams();
   const [cartState, setCartState] = useLocalStorageState('cart', {
@@ -17,13 +16,13 @@ export const ArticleList = (props: { goods: Product[] }) => {
   return (
     <ul className={styles[`card-${viewValue}`]}>
       {props.goods.map((article) => (
-        <li key={article.id} className='li-card'>
-            {(viewValue === "block") ? 
-            <div className='container-card-block'>
+        <li key={article.id} className="li-card">
+          {viewValue === 'block' ? (
+            <div className="container-card-block">
               <figure>
                 <div>
-                  <span className='article-title'>{article.title}</span>
-                  <span className='article-brand'>{`by ${article.brand}`}</span>
+                  <span className="article-title">{article.title}</span>
+                  <span className="article-brand">{`by ${article.brand}`}</span>
                 </div>
                 <button>
                   <Link to={`${article.id}`} className={styles[`card-${viewValue}Link`]}>
@@ -32,25 +31,28 @@ export const ArticleList = (props: { goods: Product[] }) => {
                 </button>
               </figure>
               <div>
-              <div className='article-container-price'>
-                <span className='article-price-new'>{`Price: ${(+article.price - (+article.price)*(+article.discountPercentage/100)).toFixed(2)}`}</span>
-                <p className='article-price-old'>{article.price}</p>
-                <p className='article-price-discount'>{`-${article.discountPercentage}%`}</p>
+                <div className="article-container-price">
+                  <span className="article-price-new">{`Price: ${(
+                    +article.price -
+                    +article.price * (+article.discountPercentage / 100)
+                  ).toFixed(2)}`}</span>
+                  <p className="article-price-old">{article.price}</p>
+                  <p className="article-price-discount">{`-${article.discountPercentage}%`}</p>
+                </div>
+                <div className="article-container-stock-rating">
+                  <p>
+                    <span className="article-stock">Remaining in stock: </span>
+                    <b className="article-stock-num">{article.stock}</b>
+                  </p>
+                  <p>
+                    <span className="article-rating">Product rating: </span>
+                    <b className="article-rating-num">{article.rating}</b>
+                  </p>
+                </div>
               </div>
-              <p className='article-container-stock-rating'>
-                <p>
-                  <span className='article-stock'>Remaining in stock: </span>
-                  <b className='article-stock-num'>{article.stock}</b>
-                </p>
-                <p>
-                 <span className='article-rating'>Product rating: </span>
-                  <b className='article-rating-num'>{article.rating}</b>
-                </p>
-              </p>
-              </div>
-              <div className='article-list-container-button'>
+              <div className="article-list-container-button">
                 <button
-                  className = {(isInCart(cartState, article.id)) ? 'article-list-active': 'article-list-default'} 
+                  className={isInCart(cartState, article.id) ? 'article-list-active' : 'article-list-default'}
                   type="button"
                   onClick={() => {
                     const data = { id: article.id, amount: 1 };
@@ -63,13 +65,14 @@ export const ArticleList = (props: { goods: Product[] }) => {
                 </button>
                 <button>
                   <Link to={`${article.id}`} className={styles[`card-${viewValue}Link`]}>
-                  <span>Details</span>
+                    <span>Details</span>
                   </Link>
                 </button>
               </div>
             </div>
-            : <Article elemId = {article.id} elemName = {'cardLost'} />
-            }  
+          ) : (
+            <Article elemId={article.id} elemName={'cardLost'} />
+          )}
         </li>
       ))}
     </ul>

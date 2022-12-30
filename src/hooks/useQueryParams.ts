@@ -3,7 +3,6 @@ import { updateCategoryBrandParams } from '../utils/updateCategoryBrandParams';
 import { getQueryParams } from '../utils/getQueryParams';
 import type { QueryParams } from '../types';
 import { updateParams } from '../utils/updateParams';
-import { getMinMaxValue } from '../helpers/getMinMaxValue';
 
 export const useQueryParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,15 +26,11 @@ export const useQueryParams = () => {
   };
 
   const getRangeFilterValues = (flag: 'price' | 'rating') => {
-    const minMaxValues = getMinMaxValue(flag);
     const params = searchParams.get(flag);
 
-    if (params) {
-      const currentValues = params.split('~').map(Number);
-      return [...currentValues, ...minMaxValues];
-    }
+    if (!params) return;
 
-    return [...minMaxValues, ...minMaxValues];
+    return params.split('~').map(Number);
   };
 
   const resetFilters = () => {
