@@ -25,7 +25,7 @@ export const ArticleList = (props: { goods: Product[] }) => {
                   <span className="article-brand">{`by ${article.brand}`}</span>
                 </div>
                 <button>
-                  <Link to={`${article.id}`} className={styles[`card-${viewValue}Link`]}>
+                  <Link to={`goods/${article.id}`} className={styles[`card-${viewValue}Link`]}>
                     <img src={article.thumbnail} alt="article icon"></img>
                   </Link>
                 </button>
@@ -64,7 +64,7 @@ export const ArticleList = (props: { goods: Product[] }) => {
                   {isInCart(cartState, article.id) ? <span>Remove from Cart</span> : <span>Add to Cart</span>}
                 </button>
                 <button>
-                  <Link to={`${article.id}`} className={styles[`card-${viewValue}Link`]}>
+                  <Link to={`goods/${article.id}`} className={styles[`card-${viewValue}Link`]}>
                     <span>Details</span>
                   </Link>
                 </button>
