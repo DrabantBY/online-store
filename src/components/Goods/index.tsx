@@ -27,15 +27,19 @@ export const Goods = () => {
         <SortField />
         <CheckBoxFilter currentGoods={goodsByFilter} flag="category" />
         <CheckBoxFilter currentGoods={goodsByFilter} flag="brand" />
-        <RangeField flag="price" />
-        <RangeField flag="rating" />
+        <RangeField currentGoods={goodsByFilter} flag="price" />
+        <RangeField currentGoods={goodsByFilter} flag="rating" />
         <p>{goodsByFilter.length === 0 ? 'Nothing found' : `total goods: ${goodsByFilter.length}`}</p>
         <button type="button" onClick={resetFilters} className={styles.goods__button_reset}>
-          <span>Reset Filters</span> 
+          <span>Reset Filters</span>
         </button>
         <CopyUrl />
       </aside>
-      {goodsByFilter.length === 0 ? <span className={styles.goods__sidebar__notfound}>Goods not found</span> : <ArticleList goods={goodsByFilter} />}
+      {goodsByFilter.length === 0 ? (
+        <span className={styles.goods__sidebar__notfound}>Goods not found</span>
+      ) : (
+        <ArticleList goods={goodsByFilter} />
+      )}
     </div>
   );
 };
