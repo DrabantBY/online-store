@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import useLocalStorageState from 'use-local-storage-state';
+import { useNavigate } from 'react-router-dom';
+
 import './style.scss';
 
 type FormValues = {
@@ -15,6 +18,8 @@ type FormValues = {
 export const ModalForm = (props: { onClose: () => void }) => {
   const [counter, setCounter] = useState(5);
   const [state, setState] = useState(false);
+  const [, setCartState] = useLocalStorageState('cart');
+  const navigate = useNavigate();
 
   const {
     register,
@@ -25,7 +30,6 @@ export const ModalForm = (props: { onClose: () => void }) => {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     setState(true);
-    // alert(JSON.stringify(data));
   };
 
   const cardNumberValue = getValues('cardNumber') || '';
@@ -35,12 +39,18 @@ export const ModalForm = (props: { onClose: () => void }) => {
       const timer = setInterval(() => {
         setCounter((counter) => counter - 1);
       }, 1000);
-      counter === 0 && clearInterval(timer);
+      console.log(counter);
+
+      if (!counter) {
+        navigate('/');
+        setTimeout(() => setCartState([]), 0);
+      }
+
       return () => {
         clearInterval(timer);
       };
     }
-  }, [counter, state]);
+  }, [counter, navigate, setCartState, state]);
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     const { key } = e;
