@@ -116,18 +116,14 @@ export const Article = (props: { elemId?: number; elemName?: string }) => {
               </button>
             ) : null}
             {!elemName ? (
-              <button className="article-button-back">
-                <Link to={`/`}>
-                  <span>back</span>
-                </Link>
-              </button>
+              <Link to={`/`} className="article-button-back">
+                <span>back</span>
+              </Link>
             ) : null}
             {elemName ? (
-              <button className="article-button-back">
-                <Link to={`${resID}`}>
-                  <span>Details</span>
-                </Link>
-              </button>
+              <Link to={`${resID}`} className="article-button-back">
+                <span>Details</span>
+              </Link>
             ) : null}
           </div>
         </div>

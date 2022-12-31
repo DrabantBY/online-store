@@ -24,11 +24,10 @@ export const ArticleList = (props: { goods: Product[] }) => {
                   <span className="article-title">{article.title}</span>
                   <span className="article-brand">{`by ${article.brand}`}</span>
                 </div>
-                <button>
-                  <Link to={`goods/${article.id}`} className={styles[`card-${viewValue}Link`]}>
-                    <img src={article.thumbnail} alt="article icon"></img>
-                  </Link>
-                </button>
+
+                <Link to={`goods/${article.id}`} className={styles[`card-${viewValue}Link`]}>
+                  <img src={article.thumbnail} alt="article icon"></img>
+                </Link>
               </figure>
               <div>
                 <div className="article-container-price">
@@ -63,11 +62,10 @@ export const ArticleList = (props: { goods: Product[] }) => {
                   }}>
                   {isInCart(cartState, article.id) ? <span>Remove from Cart</span> : <span>Add to Cart</span>}
                 </button>
-                <button>
-                  <Link to={`goods/${article.id}`} className={styles[`card-${viewValue}Link`]}>
-                    <span>Details</span>
-                  </Link>
-                </button>
+
+                <Link to={`goods/${article.id}`} className={styles[`card-${viewValue}Link`]}>
+                  <span>Details</span>
+                </Link>
               </div>
             </div>
           ) : (

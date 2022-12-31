@@ -1,11 +1,13 @@
 import type { CartItem } from '../../../types';
+import { useState } from 'react';
 import useLocalStorageState from 'use-local-storage-state';
 import { getFromCart } from '../../../helpers/handleCart';
-import { useState } from 'react';
+import { ModalForm } from '../../ModalForm';
 import './styles.scss';
 
 export const CartPromo = () => {
   const [value, setValue] = useState('');
+  const [modal, setModal] = useState(false);
   const [promoState, setPromoState] = useLocalStorageState('promo', {
     defaultValue: [] as string[],
   });
@@ -25,10 +27,16 @@ export const CartPromo = () => {
     setValue('');
   };
 
+  const handleClose = () => {
+    setModal(false);
+  };
+
   return (
     <section className="promo">
       <h2 className="promo__title">Summary:</h2>
-      <p className="promo__amount">Goods: <span>{amount}</span></p>
+      <p className="promo__amount">
+        Goods: <span>{amount}</span>
+      </p>
       <p className="promo__sum">
         Total: <span className={sale ? 'old' : ''}>{total}$</span> {sale ? <span>{total - sale}$</span> : null}
       </p>
@@ -43,7 +51,9 @@ export const CartPromo = () => {
             placeholder="promo-code-digit"
           />
         </label>
-        <button type="submit"><span>use</span></button>
+        <button type="submit">
+          <span>use</span>
+        </button>
       </form>
       {promoState.length ? (
         <ul>
@@ -57,7 +67,10 @@ export const CartPromo = () => {
           ))}
         </ul>
       ) : null}
-      <button className='button-buy' type="button"><span>buy now</span></button>
+      <button className="button-buy" type="button" onClick={() => setModal(true)}>
+        buy now
+      </button>
+      {modal ? <ModalForm onClose={handleClose} /> : null}
     </section>
   );
 };

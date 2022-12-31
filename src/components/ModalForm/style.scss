@@ -1,0 +1,34 @@
+.modal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__body {
+    width: fit-content;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    button {
+      width: fit-content;
+      padding: 5px 20px;
+      cursor: pointer;
+    }
+  }
+
+  &__field {
+    // min-width: 350px;
+    display: flex;
+    gap: 10px;
+    span {
+      color: red;
+    }
+  }
+}
