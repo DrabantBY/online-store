@@ -8,7 +8,7 @@ export const Footer = () => {
         <a href="https://rs.school/js/">
           <img className="footer-logo-rss" src="https://rs.school/images/rs_school_js.svg" alt="logo" />
         </a>
-        <span className="footer-text">Online Stor 2023</span>
+        <span className="footer-text">Online Store 2023</span>
         <a href="https://github.com/DrabantBY/online-store">
           <AiFillGithub fontSize="2.5em" />
         </a>
