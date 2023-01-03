@@ -27,6 +27,8 @@ export const Article = (props: { elemId?: number; elemName?: string }) => {
     defaultValue: [] as CartItem[],
   });
 
+  const inCart = isInCart(cartState, resID);
+
   const article = goods.find((article) => article.id === resID);
   const [indexImg, setIndexImg] = useState(0);
 
@@ -99,19 +101,26 @@ export const Article = (props: { elemId?: number; elemName?: string }) => {
           <p className="article-description">{description}</p>
           <div className="article-container-button">
             <button
-              className={isInCart(cartState, resID) ? 'article-list-active' : 'article-list-default'}
+              className={inCart ? 'article-list-active' : 'article-list-default'}
               type="button"
               onClick={() => {
                 const data = { id: resID, amount: 1 };
-                const newCartState = isInCart(cartState, resID)
-                  ? removeFromCart(cartState, resID)
-                  : addToCart(cartState, data);
+                const newCartState = inCart ? removeFromCart(cartState, resID) : addToCart(cartState, data);
                 setCartState(newCartState);
               }}>
-              {isInCart(cartState, resID) ? <span>Remove from Cart</span> : <span>Add to Cart</span>}
+              {inCart ? <span>Remove from Cart</span> : <span>Add to Cart</span>}
             </button>
             {!elemName ? (
-              <button className="article-button-buy">
+              <button
+                className="article-button-buy"
+                onClick={() => {
+                  if (!inCart) {
+                    const data = { id: resID, amount: 1 };
+                    const newCartState = addToCart(cartState, data);
+                    setCartState(newCartState);
+                  }
+                  navigate('/cart', { state: 1 });
+                }}>
                 <span>buy now</span>
               </button>
             ) : null}

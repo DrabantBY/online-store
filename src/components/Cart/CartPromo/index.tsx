@@ -1,13 +1,16 @@
 import type { CartItem } from '../../../types';
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import useLocalStorageState from 'use-local-storage-state';
 import { getFromCart } from '../../../helpers/handleCart';
 import { ModalForm } from '../../ModalForm';
 import './styles.scss';
 
 export const CartPromo = () => {
+  const location = useLocation();
+
   const [value, setValue] = useState('');
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(Boolean(location.state));
   const [promoState, setPromoState] = useLocalStorageState('promo', {
     defaultValue: [] as string[],
   });
