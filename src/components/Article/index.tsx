@@ -11,7 +11,7 @@ export const Article = (props: { elemId?: number; elemName?: string }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
-    if (id && (isNaN(+id) || +id <= 0 || +id > goods.length)) {
+    if (id && (id.includes('.') || isNaN(+id) || +id <= 0 || +id > goods.length)) {
       navigate('/error');
     }
   }, [id, navigate]);
@@ -49,7 +49,7 @@ export const Article = (props: { elemId?: number; elemName?: string }) => {
           <div className="article-container-image">
             {!elemName ? (
               <ul className="article-image-list">
-                {Array.from(new Set(images)).map((element, index, array) => (
+                {Array.from(new Set(images)).map((element, index) => (
                   <li
                     className="article-list-elem"
                     key={`article_img${index}`}
@@ -112,7 +112,7 @@ export const Article = (props: { elemId?: number; elemName?: string }) => {
                     const newCartState = addToCart(cartState, data);
                     setCartState(newCartState);
                   }
-                  navigate('/cart', { state: 1 });
+                  navigate('/cart', { replace: true, state: 1 });
                 }}>
                 <span>buy now</span>
               </button>

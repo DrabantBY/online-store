@@ -25,7 +25,7 @@ export const ModalForm = (props: { onClose: () => void }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
     getValues,
   } = useForm<FormValues>({ mode: 'onChange' });
 
@@ -177,7 +177,7 @@ export const ModalForm = (props: { onClose: () => void }) => {
             </div>
           </div>
 
-          <button className="modal-button-send" type="submit" disabled={!isValid}>
+          <button className="modal-button-send" type="submit">
             <span>send</span>
           </button>
         </form>
