@@ -40,7 +40,7 @@ export const CartPromo = () => {
       <p className="promo__sum">
         Total: <span className={sale ? 'old' : ''}>{total}$</span> {sale ? <span>{total - sale}$</span> : null}
       </p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='promo-form'>
         <label>
           <span>Promotion code:</span>
           <input
@@ -56,19 +56,19 @@ export const CartPromo = () => {
         </button>
       </form>
       {promoState.length ? (
-        <ul>
+        <ul className='promo-code-actual'>
           {promoState.map((li, index) => (
             <li key={index}>
               {li} - 10%
               <button type="button" onClick={() => setPromoState(promoState.filter((el) => el !== li))}>
-                rem
+                <span>rem</span> 
               </button>
             </li>
           ))}
         </ul>
       ) : null}
       <button className="button-buy" type="button" onClick={() => setModal(true)}>
-        buy now
+        <span>buy now</span> 
       </button>
       {modal ? <ModalForm onClose={handleClose} /> : null}
     </section>

@@ -12,7 +12,14 @@
       .cart__limit-span{
         @extend %Heading18RegularText;
         font-size: 10px;
+        margin-right: 5px;
       }
+      & input {
+        padding-left: 5px;
+      }
+    }
+    .cart-current-page{
+      padding: 0px 5px;
     }
     input {
       width: 10%;
@@ -35,11 +42,9 @@
       border: 2px solid #677374;
       cursor: pointer;
       border-radius: 5px;
-      & span {
-        @extend %Heading18RegularText;
-        font-size: 12px;
-        padding: 0px 5px 0px 5px;
-      }
+      @extend %Heading18RegularText;
+      font-size: 12px;
+      padding: 0px 5px;
     }
     button:hover {
       border: 2px solid #538083;
@@ -50,7 +55,11 @@
     }
   }
 }
-@media (max-width: 800px) {
+.cart-empty{
+  @extend %Heading24BoldBlack;
+    padding: 10px;
+}
+@media (max-width: 940px) {
   .cart {
     flex-direction: column;
     .cart__body {

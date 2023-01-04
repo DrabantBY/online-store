@@ -2,9 +2,8 @@
 .li-card {
   & .container-card-block {
     width: 100%;
-    height: 100%;
     & figure {
-      height: 55%;
+      height: 240px;
       position: relative;
       button {
         border: 0px;
@@ -44,14 +43,6 @@
       padding: 2px 5px;
       .article-price-new {
         @extend %Heading12Thin;
-        margin-right: 5px;
-      }
-      .article-price-old {
-        @extend %Heading12Thin;
-        color: rgb(192, 11, 11);
-        text-decoration: line-through;
-        position: relative;
-        bottom: 5px;
         margin-right: 10px;
       }
       .article-price-discount {
@@ -80,10 +71,13 @@
       width: 100%;
       align-items: center;
       margin-top: 5px;
-      & button {
+      & button,a {
         width: 80%;
         @extend %button;
         padding: 7px 3px 7px 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         & span {
           font-size: 13px;
         }
@@ -92,6 +86,7 @@
         }
         &:last-child {
           background-color: #7F8C8D;
+          margin-bottom: 5px;
         }
       }
       .article-list-active{
@@ -104,10 +99,7 @@
   .li-card {
     & .container-card-block {
       width: 100%;
-      height: 100%;
       & figure {
-        height: 60%;
-
         .article-brand {
           display: none;
         }
@@ -123,6 +115,9 @@
 @media (max-width: 800px) {
   .li-card {
     & .container-card-block {
+      & figure {
+        height: 150px;
+      }
       .article-container-price {
         .article-price-new {
           font-size: 8px;
@@ -152,9 +147,6 @@
 @media (max-width: 600px) {
   .li-card {
     & .container-card-block {
-      & figure {
-        height: 40%;
-      }
       .article-container-price {
         .article-price-new {
           font-size: 7px;

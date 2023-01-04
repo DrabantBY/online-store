@@ -3,14 +3,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  width: 100%;
   label {
     display: flex;
     align-items: center;
     cursor: pointer;
+    width: 70%;
     .filterItem-name {
       @extend %Heading18RegularText;
       font-size: 10px;
+      text-overflow: clip;
+      width: 100%;
     }
 
   }

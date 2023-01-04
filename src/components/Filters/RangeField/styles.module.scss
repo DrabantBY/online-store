@@ -8,23 +8,23 @@
   }
 
   &Track {
-    background-color: royalblue;
+    background-color: #34495E;
     border-radius: 0.5rem;
-    height: 0.8rem;
+    height: 0.5rem;
 
     &:nth-child(odd) {
-      background-color: cornflowerblue;
+      background-color: #499499;
     }
   }
 
   &Thumb {
     width: 1.2rem;
     height: 1.2rem;
-    background: goldenrod;
+    background: #34495E;
     border-radius: 50%;
     cursor: pointer;
     position: absolute;
-    top: -2px;
+    bottom: -8px;
     color: red;
     &:first-child {
       display: none;

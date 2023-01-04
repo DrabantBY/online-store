@@ -1,5 +1,6 @@
 @import '../../../style-import.scss';
 .promo{
+  margin-right: 5px;
   .promo__title {
     @extend %Heading18RegularText; 
   }
@@ -14,12 +15,17 @@
   .promo__sum {
     @extend %Heading18RegularText;
     font-size: 14px;
+    .old {
+      text-decoration-line: line-through;
+      text-decoration-thickness: 2px;
+      text-decoration-color: rgb(148, 42, 86);
+    }  
     & span {
       @extend %Heading24BoldBlack; 
       font-size: 14px;
     }
   }
-  form{
+  .promo-form {
     span {
       @extend %Heading18RegularText;
       font-size: 13px;
@@ -32,6 +38,7 @@
       font-size: 12px;
       margin-right: 5px;
       border-radius: 5px;
+      padding-left: 5px;
     }
     input:focus {
       border: 2px solid #538083;
@@ -39,7 +46,7 @@
       outline: 0;
       background-color: transparent;
     }
-    button{
+    button {
       background-color: transparent;
       border: 2px solid #677374;
       cursor: pointer;
@@ -58,15 +65,31 @@
       box-shadow: 0 0 1px 1px rgb(114, 132, 150);
     }
   }
+  .promo-code-actual {
+    @extend %Heading18RegularText;
+    font-size: 15px;
+    & li {
+      margin-top: 5px;
+    }
+    & button {
+      @extend %button;
+      padding: 2px 5px 2px 5px;
+      margin-left: 5px;
+      & span {
+        font-size: 10px;
+      }
+    }
+  }
   .button-buy{
     margin-top: 5px;
     @extend %button;
+    background-color: cornflowerblue;
     & span {
       font-size: 14px;
     }
   }
 }
-@media (max-width: 800px) {
+@media (max-width: 940px) {
   .promo{
     display: flex;
     flex-direction: column;

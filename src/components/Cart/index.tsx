@@ -68,7 +68,7 @@ export const Cart = () => {
                 }}>
                 prev
               </button>
-              <span>Current page: {page}</span>
+              <span className='cart-current-page'>Current page: {page}</span>
               <button
                 type="button"
                 disabled={page === pageNumber}
@@ -89,6 +89,6 @@ export const Cart = () => {
       <CartPromo />
     </div>
   ) : (
-    <div>Cart is empty</div>
+    <div className="cart-empty">Cart is empty</div>
   );
 };
