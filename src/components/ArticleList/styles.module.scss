@@ -1,7 +1,5 @@
 .card {
   display: flex;
-
-
   &-block {
     display: flex;
     flex-wrap: wrap;
@@ -10,7 +8,7 @@
     margin-top: 5px;
     & li {
       width: 27%;
-      background-color: #BDC3C7;
+      background-color: #bdc3c7;
       border-radius: 5px;
       margin-bottom: 5px;
       border: 1px solid grey;
@@ -37,15 +35,13 @@
     }
     &-list {
       width: 70%;
-    } 
-  } 
-  
+    }
+  }
 }
 @media (max-width: 450px) {
   .card {
     &-list {
-      width:60%;
-    } 
-  } 
-  
+      width: 60%;
+    }
+  }
 }

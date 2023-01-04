@@ -2,7 +2,7 @@
 .article-container {
   display: flex;
   justify-content: space-between;
-  background-color: #BDC3C7;
+  background-color: #bdc3c7;
   padding: 20px;
   width: 100%;
   .article-container-path-image {
@@ -16,11 +16,11 @@
       display: flex;
       flex-wrap: wrap;
       align-content: flex-start;
-      .article-arrows{
+      .article-arrows {
         padding: 0px 5px;
       }
       & p {
-        white-space:break-spaces;
+        white-space: break-spaces;
       }
       .article-brand {
         white-space: nowrap;
@@ -52,7 +52,7 @@
         }
       }
       .article-image-list::-webkit-scrollbar {
-        width:0px;
+        width: 0px;
       }
       .article-container-main-image {
         height: 90%;
@@ -118,70 +118,66 @@
       @extend %Heading18RegularText;
       margin-top: 10px;
     }
-    .article-container-button{
+    .article-container-button {
       margin-top: 10px;
       display: flex;
       flex-direction: column;
       width: 50%;
-      & button{
+      & button {
         @extend %button;
       }
-      .article-list-active{
+      .article-list-active {
         background-color: #499499;
       }
-      .article-button-buy{
+      .article-button-buy {
         margin-top: 10px;
       }
-      .article-button-back{
+      .article-button-back {
         @extend %button;
         margin-top: 10px;
-        background-color: #7F8C8D;
+        background-color: #7f8c8d;
         text-align: center;
       }
     }
   }
 }
-
 @media (max-width: 1200px) {
-  .article-container{
+  .article-container {
     .article-container-image {
       width: 75%;
     }
-    .article-container-text .article-container-button{
+    .article-container-text .article-container-button {
       width: 70%;
     }
-  } 
- }
-
- @media (max-width: 850px) {
-    .article-container {
-      height: auto;
-      .article-container-text {
-        .article-container-stock-rating {
-          flex-direction: column;
-        }
-        .article-rating {
-          margin-left: 0px;
-        }
-        .article-container-button{
-          width: 100%;
-        }
-      } 
-    } 
- }
-
- @media (max-width: 800px) {
-  .article-container .article-container-image .article-container-main-image .article-container-title {
-      flex-direction: column;
-      align-items: flex-start;
+  }
+}
+@media (max-width: 850px) {
+  .article-container {
+    height: auto;
+    .article-container-text {
+      .article-container-stock-rating {
+        flex-direction: column;
+      }
+      .article-rating {
+        margin-left: 0px;
+      }
+      .article-container-button {
+        width: 100%;
+      }
     }
- }
- 
- @media (max-width: 700px) {
-  .article-container{
+  }
+}
+@media (max-width: 800px) {
+  .article-container .article-container-image .article-container-main-image .article-container-title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 700px) {
+  .article-container {
     flex-direction: column;
     justify-content: space-between;
-    .article-container-path-image{
+    .article-container-path-image {
       .article-container-image {
         flex-direction: column-reverse;
         width: 100%;
@@ -194,12 +190,12 @@
           .article-main-image {
             width: 100%;
           }
-          .article-container-title{
+          .article-container-title {
             align-items: flex-end;
             flex-direction: row;
           }
-        } 
-        .article-image-list{
+        }
+        .article-image-list {
           display: flex;
           flex-direction: row;
           height: 30%;
@@ -208,25 +204,25 @@
         }
       }
     }
-    .article-container-text{
+    .article-container-text {
       width: 100%;
       margin-top: 10px;
-      .article-container-button{
+      .article-container-button {
         width: 50%;
       }
     }
   }
- }
- @media (max-width: 450px) {
-  .article-container{
+}
+@media (max-width: 450px) {
+  .article-container {
     padding: 2px;
-    .article-container-path-image{
+    .article-container-path-image {
       width: 100%;
     }
-    .article-container-text{
-      .article-container-button{
+    .article-container-text {
+      .article-container-button {
         width: 80%;
       }
     }
   }
- }
+}

@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import useLocalStorageState from 'use-local-storage-state';
 import { useNavigate } from 'react-router-dom';
 import { SiVisa } from 'react-icons/si';
 import { SiMastercard } from 'react-icons/si';
-
 import './style.scss';
-import { spawn } from 'child_process';
 
 type FormValues = {
   fullName: string;
@@ -30,10 +28,6 @@ export const ModalForm = (props: { onClose: () => void }) => {
     formState: { errors, isValid },
     getValues,
   } = useForm<FormValues>({ mode: 'onChange' });
-
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    setState(true);
-  };
 
   const cardNumberValue = getValues('cardNumber') || '';
 
@@ -80,9 +74,9 @@ export const ModalForm = (props: { onClose: () => void }) => {
   return (
     <div className="modal" onClick={handleClick}>
       {state ? (
-        <p>Thanks for your order. Redirect to the store after {counter} sec</p>
+        <p className="modal__counter">Thanks for your order. Redirect to the store after {counter} sec</p>
       ) : (
-        <form className="modal__body" onSubmit={handleSubmit(onSubmit)}>
+        <form className="modal__body" onSubmit={handleSubmit(() => setState(true))}>
           <div className="modal__field">
             <input
               {...register('fullName', {
@@ -126,14 +120,14 @@ export const ModalForm = (props: { onClose: () => void }) => {
 
           <div className="modal__card">
             <div className="card__logo">
-            <span className='card__logo_text'>Card information:</span>
-            <p>
-              {cardNumberValue.startsWith('4')
-                ? <SiVisa fontSize='25px' />
-                : cardNumberValue.startsWith('5')
-                ? <SiMastercard fontSize='25px' color='red' />
-                : null}
-            </p>
+              <span className="card__logo_text">Card information:</span>
+              <p>
+                {cardNumberValue.startsWith('4') ? (
+                  <SiVisa fontSize="25px" />
+                ) : cardNumberValue.startsWith('5') ? (
+                  <SiMastercard fontSize="25px" color="red" />
+                ) : null}
+              </p>
             </div>
             <div className="card__field">
               <input
@@ -183,8 +177,8 @@ export const ModalForm = (props: { onClose: () => void }) => {
             </div>
           </div>
 
-          <button className='modal-button-send' type="submit" disabled={!isValid}>
-            <span>send</span> 
+          <button className="modal-button-send" type="submit" disabled={!isValid}>
+            <span>send</span>
           </button>
         </form>
       )}
