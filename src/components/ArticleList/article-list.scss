@@ -25,16 +25,15 @@
           @extend %Heading12Thin;
         }
       }
-
-      & img{
+      & img {
         width: 100%;
         height: 100%;
-        object-fit:cover;
+        object-fit: cover;
         overflow: hidden;
         font-size: 0px;
         padding: 0px;
         margin: 0px;
-        border-radius:  5px 5px 0px 0px;
+        border-radius: 5px 5px 0px 0px;
       }
     }
     .article-container-price {
@@ -71,7 +70,8 @@
       width: 100%;
       align-items: center;
       margin-top: 5px;
-      & button,a {
+      & button,
+      a {
         width: 80%;
         @extend %button;
         padding: 7px 3px 7px 3px;
@@ -85,11 +85,11 @@
           margin-bottom: 5px;
         }
         &:last-child {
-          background-color: #7F8C8D;
+          background-color: #7f8c8d;
           margin-bottom: 5px;
         }
       }
-      .article-list-active{
+      .article-list-active {
         background-color: #499499;
       }
     }
@@ -105,11 +105,11 @@
         }
       }
       .article-list-container-button {
-        & button span{
+        & button span {
           font-size: 12px;
         }
-      }   
-    } 
+      }
+    }
   }
 }
 @media (max-width: 800px) {
@@ -137,7 +137,7 @@
         font-size: 8px;
       }
       .article-list-container-button {
-        & button span{
+        & button span {
           font-size: 10px;
         }
       }
@@ -162,7 +162,7 @@
       .article-stock {
         font-size: 6px;
       }
-      .article-stock-num{
+      .article-stock-num {
         font-size: 7px;
       }
       .article-rating {
@@ -172,7 +172,7 @@
         font-size: 7px;
       }
       .article-list-container-button {
-        & button span{
+        & button span {
           font-size: 8px;
         }
       }

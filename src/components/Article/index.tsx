@@ -10,13 +10,11 @@ export const Article = (props: { elemId?: number; elemName?: string }) => {
   const { elemId, elemName } = props;
   const { id } = useParams();
   const navigate = useNavigate();
-
   useEffect(() => {
     if (id && (isNaN(+id) || +id <= 0 || +id > goods.length)) {
       navigate('/error');
     }
   }, [id, navigate]);
-
   let resID: number;
   if (elemId) {
     resID = elemId;
@@ -26,9 +24,7 @@ export const Article = (props: { elemId?: number; elemName?: string }) => {
   const [cartState, setCartState] = useLocalStorageState('cart', {
     defaultValue: [] as CartItem[],
   });
-
   const inCart = isInCart(cartState, resID);
-
   const article = goods.find((article) => article.id === resID);
   const [indexImg, setIndexImg] = useState(0);
 
@@ -42,12 +38,12 @@ export const Article = (props: { elemId?: number; elemName?: string }) => {
               <Link to={`/`}>
                 <p>Store</p>
               </Link>
-              <p className='article-arrows'>{`>>`}</p>
+              <p className="article-arrows">{`>>`}</p>
               <p>{`${category}`}</p>
-              <p className='article-arrows'>{`>>`}</p>
-              <p className='article-brand'>{`${brand}`}</p>
-              <p className='article-arrows'>{`>>`}</p>
-              <p  className='article-title'>{`${title}`}</p>
+              <p className="article-arrows">{`>>`}</p>
+              <p className="article-brand">{`${brand}`}</p>
+              <p className="article-arrows">{`>>`}</p>
+              <p className="article-title">{`${title}`}</p>
             </div>
           ) : null}
           <div className="article-container-image">
@@ -71,7 +67,7 @@ export const Article = (props: { elemId?: number; elemName?: string }) => {
                 <span className="article-brand">{`by ${brand}`}</span>
               </div>
               {elemName ? (
-                <Link to={`${resID}`}>
+                <Link to={`goods/${resID}`}>
                   <img className="article-main-image" src={images[indexImg]} alt="" />
                 </Link>
               ) : (

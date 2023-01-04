@@ -40,7 +40,7 @@
     padding: 40px;
     display: flex;
     flex-direction: column;
-    background-color: #7F8C8D;
+    background-color: #7f8c8d;
     button {
       width: fit-content;
       padding: 5px 20px;
@@ -48,8 +48,13 @@
     }
   }
 
+  &__counter {
+    @extend %Heading18RegularText;
+    font-size: 3rem;
+    color: royalblue;
+  }
+
   &__field {
-    // min-width: 350px;
     height: 35px;
     display: flex;
     flex-direction: column;
@@ -58,7 +63,7 @@
     }
     ::-webkit-input-placeholder {
       color: #3e4546;
-   }
+    }
     & input:focus {
       @extend %input-focus;
     }
@@ -67,7 +72,7 @@
     }
   }
   &__card {
-    & .card__logo{
+    & .card__logo {
       display: flex;
       height: 20px;
       align-items: flex-end;
@@ -78,7 +83,7 @@
         font-size: 14px;
         margin-right: 5px;
       }
-      & p{
+      & p {
         height: 20px;
         position: relative;
         top: -5px;
@@ -93,7 +98,7 @@
       }
       ::-webkit-input-placeholder {
         color: #3e4546;
-     }
+      }
       & input:focus {
         @extend %input-focus;
       }
@@ -102,7 +107,7 @@
       }
     }
   }
-  & .modal-button-send{
+  & .modal-button-send {
     @extend %button;
   }
 }
