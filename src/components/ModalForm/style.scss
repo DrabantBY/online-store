@@ -1,3 +1,29 @@
+@import '../../style-import.scss';
+
+%input {
+  background-color: transparent;
+  outline: 0;
+  border: 2px solid #525b5c;
+  @extend %Heading18RegularText;
+  font-size: 12px;
+  margin-right: 5px;
+  border-radius: 5px;
+  padding-left: 3px;
+  width: 170px;
+}
+%input-focus {
+  border: 2px solid #426568;
+  box-shadow: 0 0 1px 1px rgb(114, 132, 150);
+  outline: 0;
+  background-color: transparent;
+}
+%input-span {
+  color: rgb(148, 42, 86);
+  @extend %Heading18RegularText;
+  font-size: 10px;
+  margin-top: 2px;
+}
+
 .modal {
   position: absolute;
   left: 0;
@@ -8,14 +34,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   &__body {
+    border-radius: 10px;
     width: fit-content;
-    padding: 10px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-
+    background-color: #7F8C8D;
     button {
       width: fit-content;
       padding: 5px 20px;
@@ -25,10 +50,59 @@
 
   &__field {
     // min-width: 350px;
+    height: 35px;
     display: flex;
-    gap: 10px;
-    span {
-      color: red;
+    flex-direction: column;
+    & input {
+      @extend %input;
     }
+    ::-webkit-input-placeholder {
+      color: #3e4546;
+   }
+    & input:focus {
+      @extend %input-focus;
+    }
+    & span {
+      @extend %input-span;
+    }
+  }
+  &__card {
+    & .card__logo{
+      display: flex;
+      height: 20px;
+      align-items: flex-end;
+      & .card__logo_text {
+        position: relative;
+        bottom: 4px;
+        @extend %Heading18RegularText;
+        font-size: 14px;
+        margin-right: 5px;
+      }
+      & p{
+        height: 20px;
+        position: relative;
+        top: -5px;
+      }
+    }
+    & .card__field {
+      height: 35px;
+      display: flex;
+      flex-direction: column;
+      & input {
+        @extend %input;
+      }
+      ::-webkit-input-placeholder {
+        color: #3e4546;
+     }
+      & input:focus {
+        @extend %input-focus;
+      }
+      & span {
+        @extend %input-span;
+      }
+    }
+  }
+  & .modal-button-send{
+    @extend %button;
   }
 }

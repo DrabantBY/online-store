@@ -92,8 +92,9 @@
 @media (max-width: 500px) {
   .cart__item {
     .cart__image-container {
+      margin-right: 4px;
       .cart__image {
-        width: 100px;
+        width: 80px;
       }
     }   
     .cart__information-container {

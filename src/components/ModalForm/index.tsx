@@ -2,8 +2,11 @@ import { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import useLocalStorageState from 'use-local-storage-state';
 import { useNavigate } from 'react-router-dom';
+import { SiVisa } from 'react-icons/si';
+import { SiMastercard } from 'react-icons/si';
 
 import './style.scss';
+import { spawn } from 'child_process';
 
 type FormValues = {
   fullName: string;
@@ -84,7 +87,7 @@ export const ModalForm = (props: { onClose: () => void }) => {
             <input
               {...register('fullName', {
                 required: 'required',
-                pattern: { value: /^[a-z]{3,}\s[a-z]{3,}$/i, message: 'invalid full name' },
+                pattern: { value: /^[a-z]{3,}\s[a-z]{3,}$/i, message: 'Invalid full name' },
               })}
               placeholder="full name"
             />
@@ -94,7 +97,7 @@ export const ModalForm = (props: { onClose: () => void }) => {
             <input
               {...register('email', {
                 required: 'required',
-                pattern: { value: /^\w+@\w+\.[a-z]{2,}$/i, message: 'invalid email' },
+                pattern: { value: /^\w+@\w+\.[a-z]{2,}$/i, message: 'Invalid email' },
               })}
               placeholder="email"
             />
@@ -104,7 +107,7 @@ export const ModalForm = (props: { onClose: () => void }) => {
             <input
               {...register('phone', {
                 required: 'required',
-                pattern: { value: /^\+\d{9,}$/, message: 'invalid number' },
+                pattern: { value: /^\+\d{9,}$/, message: 'Invalid number' },
               })}
               placeholder="phone number"
             />
@@ -114,7 +117,7 @@ export const ModalForm = (props: { onClose: () => void }) => {
             <input
               {...register('address', {
                 required: 'required',
-                pattern: { value: /^([a-z]{5,}\s){2}[a-z]{5,}$/, message: 'invalid address' },
+                pattern: { value: /^([a-z]{5,}\s){2}[a-z]{5,}$/, message: 'Invalid address' },
               })}
               placeholder="delivery address"
             />
@@ -123,11 +126,14 @@ export const ModalForm = (props: { onClose: () => void }) => {
 
           <div className="modal__card">
             <div className="card__logo">
+            <span className='card__logo_text'>Card information:</span>
+            <p>
               {cardNumberValue.startsWith('4')
-                ? 'Visa'
+                ? <SiVisa fontSize='25px' />
                 : cardNumberValue.startsWith('5')
-                ? 'MasterCard'
-                : 'OtherSystem'}
+                ? <SiMastercard fontSize='25px' color='red' />
+                : null}
+            </p>
             </div>
             <div className="card__field">
               <input
@@ -177,8 +183,8 @@ export const ModalForm = (props: { onClose: () => void }) => {
             </div>
           </div>
 
-          <button type="submit" disabled={!isValid}>
-            send
+          <button className='modal-button-send' type="submit" disabled={!isValid}>
+            <span>send</span> 
           </button>
         </form>
       )}

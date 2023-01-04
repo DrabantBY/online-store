@@ -40,14 +40,14 @@ export const Article = (props: { elemId?: number; elemName?: string }) => {
           {!elemName ? (
             <div className="article-container-path">
               <Link to={`/`}>
-                <span>Store</span>
+                <p>Store</p>
               </Link>
-              <span>{`>>`}</span>
-              <span>{`${category}`}</span>
-              <span>{`>>`}</span>
-              <span>{`${brand}`}</span>
-              <span>{`>>`}</span>
-              <span>{`${title}`}</span>
+              <p className='article-arrows'>{`>>`}</p>
+              <p>{`${category}`}</p>
+              <p className='article-arrows'>{`>>`}</p>
+              <p className='article-brand'>{`${brand}`}</p>
+              <p className='article-arrows'>{`>>`}</p>
+              <p  className='article-title'>{`${title}`}</p>
             </div>
           ) : null}
           <div className="article-container-image">
@@ -82,10 +82,7 @@ export const Article = (props: { elemId?: number; elemName?: string }) => {
         </div>
         <div className="article-container-text">
           <div className="article-container-price">
-            <span className="article-price-new">{`Price: ${(+price - +price * (+discountPercentage / 100)).toFixed(
-              2
-            )}`}</span>
-            <p className="article-price-old">{price}</p>
+            <span className="article-price-new">{`Price: ${+price}`}</span>
             <p className="article-price-discount">{`-${discountPercentage}%`}</p>
           </div>
           <div className="article-container-stock-rating">
@@ -130,7 +127,7 @@ export const Article = (props: { elemId?: number; elemName?: string }) => {
               </Link>
             ) : null}
             {elemName ? (
-              <Link to={`${resID}`} className="article-button-back">
+              <Link to={`goods/${resID}`} className="article-button-back">
                 <span>Details</span>
               </Link>
             ) : null}

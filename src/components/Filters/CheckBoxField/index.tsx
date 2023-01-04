@@ -20,7 +20,7 @@ export const CheckBoxField = (props: { flag: string; value: string; current: num
     <li className='filterItem'>
       <label>
         <input className='filterItem-checkbox' type="checkbox" checked={checked} onChange={handleChange} />
-        <span className='filterItem-name'>{value}</span>
+        <p className='filterItem-name'>{value}</p>
       </label>
       <span className='filterItem-value'>
         {current} | {total}

@@ -12,16 +12,29 @@
     .article-container-path {
       @extend %Heading18RegularText;
       font-size: 16px;
-      width: 60%;
+      max-width: 100%;
       display: flex;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      .article-arrows{
+        padding: 0px 5px;
+      }
+      & p {
+        white-space:break-spaces;
+      }
+      .article-brand {
+        white-space: nowrap;
+      }
+      .article-title {
+        white-space: nowrap;
+      }
     }
     .article-container-image {
       display: flex;
       width: 100%;
       height: 100%;
       .article-image-list {
-        height: 100%;
+        height: 70%;
         overflow: auto;
         margin-right: 20px;
         width: 30%;
@@ -81,14 +94,6 @@
         @extend %Heading18RegularText;
         margin-right: 5px;
       }
-      .article-price-old {
-        @extend %Heading18Light;
-        color: rgb(192, 11, 11);
-        text-decoration: line-through;
-        position: relative;
-        bottom: 10px;
-        margin-right: 10px;
-      }
       .article-price-discount {
         @extend %Heading12Thin;
         background-color: rgb(192, 11, 11);
@@ -128,8 +133,10 @@
         margin-top: 10px;
       }
       .article-button-back{
+        @extend %button;
         margin-top: 10px;
         background-color: #7F8C8D;
+        text-align: center;
       }
     }
   }
@@ -137,7 +144,6 @@
 
 @media (max-width: 1200px) {
   .article-container{
-    height: 60vh;
     .article-container-image {
       width: 75%;
     }
@@ -175,22 +181,31 @@
   .article-container{
     flex-direction: column;
     justify-content: space-between;
-    .article-container-image {
-      width: 100%;
-      .article-container-main-image{
-        width: 90%;
-        height: auto;
-        .article-main-image{
-          width: 100%;
-        }
-      } 
-      flex-direction: column-reverse;
-      .article-image-list{
-        display: flex;
-        flex-direction: row;
-        height: 30%;
+    .article-container-path-image{
+      .article-container-image {
+        flex-direction: column-reverse;
         width: 100%;
-        margin-top: 10px;
+        .article-container-path {
+          font-size: 11px;
+        }
+        .article-container-main-image {
+          width: 90%;
+          height: auto;
+          .article-main-image {
+            width: 100%;
+          }
+          .article-container-title{
+            align-items: flex-end;
+            flex-direction: row;
+          }
+        } 
+        .article-image-list{
+          display: flex;
+          flex-direction: row;
+          height: 30%;
+          width: 100%;
+          margin-top: 10px;
+        }
       }
     }
     .article-container-text{

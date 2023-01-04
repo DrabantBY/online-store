@@ -31,11 +31,7 @@ export const ArticleList = (props: { goods: Product[] }) => {
               </figure>
               <div>
                 <div className="article-container-price">
-                  <span className="article-price-new">{`Price: ${(
-                    +article.price -
-                    +article.price * (+article.discountPercentage / 100)
-                  ).toFixed(2)}`}</span>
-                  <p className="article-price-old">{article.price}</p>
+                  <span className="article-price-new">{`Price: ${+article.price}`}</span>
                   <p className="article-price-discount">{`-${article.discountPercentage}%`}</p>
                 </div>
                 <div className="article-container-stock-rating">
@@ -62,8 +58,7 @@ export const ArticleList = (props: { goods: Product[] }) => {
                   }}>
                   {isInCart(cartState, article.id) ? <span>Remove from Cart</span> : <span>Add to Cart</span>}
                 </button>
-
-                <Link to={`goods/${article.id}`} className={styles[`card-${viewValue}Link`]}>
+                <Link to={`goods/${article.id}`} className='button-details'>
                   <span>Details</span>
                 </Link>
               </div>
