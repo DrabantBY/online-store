@@ -9,9 +9,6 @@ import './styles.scss';
 export const CartPromo = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
-  console.log('render');
-
   const [value, setValue] = useState('');
   const [modal, setModal] = useState(Boolean(location.state));
   const [promoState, setPromoState] = useLocalStorageState('promo', {

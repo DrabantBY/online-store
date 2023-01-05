@@ -10,7 +10,6 @@ import './style.scss';
 export const Cart = () => {
   const [cartState] = useLocalStorageState('cart');
   const [searchParams, setSearchParams] = useSearchParams();
-
   const page = Number(searchParams.get('page')) || 1;
   const limit = Number(searchParams.get('limit')) || 3;
   const [value, setValue] = useState(limit);
@@ -68,7 +67,7 @@ export const Cart = () => {
                 }}>
                 prev
               </button>
-              <span className='cart-current-page'>Current page: {page}</span>
+              <span className="cart-current-page">Current page: {page}</span>
               <button
                 type="button"
                 disabled={page === pageNumber}

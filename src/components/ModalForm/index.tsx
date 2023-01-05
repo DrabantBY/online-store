@@ -36,7 +36,6 @@ export const ModalForm = (props: { onClose: () => void }) => {
       const timer = setInterval(() => {
         setCounter((counter) => counter - 1);
       }, 1000);
-      console.log(counter);
 
       if (!counter) {
         navigate('/');
