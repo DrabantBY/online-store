@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useLocalStorageState from 'use-local-storage-state';
 import { getFromCart } from '../../../helpers/handleCart';
+import { isValidPromoCode } from '../../../helpers/isValidPromoCode';
 import { ModalForm } from '../../ModalForm';
 import './styles.scss';
 
@@ -16,7 +17,7 @@ export const CartPromo = () => {
   });
   const [cartState] = useLocalStorageState('cart');
   const { total, amount } = getFromCart(cartState as CartItem[]);
-  const sale = (total * 10 * promoState.length) / 100;
+  const sale = (total * promoState.length) / 10;
 
   useEffect(() => {
     navigate('/cart', { replace: true });
@@ -26,11 +27,7 @@ export const CartPromo = () => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const value = form.promo.value as string;
-
-    if (/^promo-code-[1-9]$/.test(value) && !promoState.includes(value)) {
-      setPromoState([...promoState, value]);
-    }
-
+    isValidPromoCode(promoState, value) && setPromoState([...promoState, value]);
     setValue('');
   };
 
@@ -41,12 +38,14 @@ export const CartPromo = () => {
         Goods: <span>{amount}</span>
       </p>
       <p className="promo__sum">
-        Total: <span className={sale ? 'old' : ''}>{total}$</span> {sale ? <span>{total - sale}$</span> : null}
+        Total: <span className={sale ? 'old' : ''}>{total}$</span>
+        {sale ? <span>{total - sale <= 0 ? 0 : (total - sale).toFixed(1)}$</span> : null}
       </p>
       <form onSubmit={handleSubmit} className="promo-form">
         <label>
           <span>Promotion code:</span>
           <input
+            title="promo-code-1, promo-code-2..."
             type="text"
             name="promo"
             value={value}
@@ -54,9 +53,11 @@ export const CartPromo = () => {
             placeholder="promo-code-digit"
           />
         </label>
-        <button type="submit">
-          <span>use</span>
-        </button>
+        {isValidPromoCode(promoState, value) && (
+          <button type="submit">
+            <span>use</span>
+          </button>
+        )}
       </form>
       {promoState.length ? (
         <ul className="promo-code-actual">

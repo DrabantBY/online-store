@@ -20,6 +20,7 @@ export const ModalForm = (props: { onClose: () => void }) => {
   const [counter, setCounter] = useState(5);
   const [state, setState] = useState(false);
   const [, setCartState] = useLocalStorageState('cart');
+  const [, setPromoState] = useLocalStorageState('promo');
   const navigate = useNavigate();
 
   const {
@@ -39,14 +40,17 @@ export const ModalForm = (props: { onClose: () => void }) => {
 
       if (!counter) {
         navigate('/');
-        setTimeout(() => setCartState([]), 0);
+        setTimeout(() => {
+          setCartState([]);
+          setPromoState([]);
+        }, 0);
       }
 
       return () => {
         clearInterval(timer);
       };
     }
-  }, [counter, navigate, setCartState, state]);
+  }, [counter, navigate, setCartState, setPromoState, state]);
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     const { key } = e;
@@ -80,7 +84,7 @@ export const ModalForm = (props: { onClose: () => void }) => {
             <input
               {...register('fullName', {
                 required: 'required',
-                pattern: { value: /^[a-z]{3,}\s[a-z]{3,}$/i, message: 'Invalid full name' },
+                pattern: { value: /^\w{3,}\s\w{3,}$/i, message: 'Invalid full name' },
               })}
               placeholder="full name"
             />
@@ -110,7 +114,7 @@ export const ModalForm = (props: { onClose: () => void }) => {
             <input
               {...register('address', {
                 required: 'required',
-                pattern: { value: /^([a-z]{5,}\s){2}[a-z]{5,}$/, message: 'Invalid address' },
+                pattern: { value: /^(\w{5,}\s){2,}\w{5,}$/, message: 'Invalid address' },
               })}
               placeholder="delivery address"
             />

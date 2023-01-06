@@ -20,6 +20,7 @@ export const Cart = () => {
   ];
 
   useEffect(() => setValue(limit), [limit]);
+
   useEffect(() => {
     if (isEmptyPage) {
       searchParams.set('page', `${page - 1}`);

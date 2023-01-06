@@ -10,9 +10,9 @@ const filterByBrand = (article: Product, value: string | undefined) =>
 const filterBySearch = (article: Product, value: string | undefined) => {
   return (
     !value ||
-    article.category.includes(value) ||
-    article.brand.includes(value) ||
-    article.title.includes(value) ||
+    article.category.toLowerCase().includes(value.toLowerCase()) ||
+    article.brand.toLowerCase().includes(value.toLowerCase()) ||
+    article.title.toLowerCase().includes(value.toLowerCase()) ||
     article.price.toString().includes(value) ||
     article.rating.toString().includes(value) ||
     article.stock.toString().includes(value)
