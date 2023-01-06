@@ -8,10 +8,10 @@ import { ModalForm } from '../../ModalForm';
 import './styles.scss';
 
 export const CartPromo = () => {
-  const location = useLocation();
+  const { pathname, search, state } = useLocation();
   const navigate = useNavigate();
   const [value, setValue] = useState('');
-  const [modal, setModal] = useState(Boolean(location.state));
+  const [modal, setModal] = useState(Boolean(state));
   const [promoState, setPromoState] = useLocalStorageState('promo', {
     defaultValue: [] as string[],
   });
@@ -20,8 +20,8 @@ export const CartPromo = () => {
   const sale = (total * promoState.length) / 10;
 
   useEffect(() => {
-    navigate('/cart', { replace: true });
-  }, [navigate]);
+    navigate(pathname + search, { replace: true });
+  }, [pathname, search, navigate]);
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
