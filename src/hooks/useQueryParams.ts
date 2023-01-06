@@ -1,8 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import { updateCategoryBrandParams } from '../utils/updateCategoryBrandParams';
 import { getQueryParams } from '../utils/getQueryParams';
-import type { QueryParams } from '../types';
-import { updateParams } from '../utils/updateParams';
+import { QueryParams, Params } from '../types';
 
 export const useQueryParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -15,7 +14,7 @@ export const useQueryParams = () => {
         updateCategoryBrandParams(searchParams, flag, value);
         break;
       default:
-        updateParams(searchParams, flag, value);
+        Params.update(searchParams, flag, value);
     }
     setSearchParams(searchParams);
   };

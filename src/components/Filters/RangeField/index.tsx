@@ -17,7 +17,7 @@ export const RangeField = (props: { currentGoods: Product[]; flag: 'price' | 'ra
     <div className={styles.slider}>
       <h2 className={styles.sliderTitle}>Filter by {flag}</h2>
       <ReactSlider
-        value={values ? [values[0], values[1]] : [minValue, maxValue]}
+        value={values ? [values[0], values[1]] : [minValue ?? min, maxValue ?? max]}
         className={styles.sliderBody}
         min={min}
         max={max}
@@ -30,8 +30,8 @@ export const RangeField = (props: { currentGoods: Product[]; flag: 'price' | 'ra
       />
 
       <div className={styles.sliderValue}>
-        <span>{values ? values[0] : minValue}</span>
-        <span>{values ? values[1] : maxValue}</span>
+        <span>{values ? values[0] : minValue ?? min}</span>
+        <span>{values ? values[1] : maxValue ?? max}</span>
       </div>
     </div>
   );

@@ -32,3 +32,10 @@ export interface CartProduct {
   amount: number;
   index: number;
 }
+
+export class Params {
+  static update(searchParams: URLSearchParams, flag: string, value: string) {
+    if (value) searchParams.set(flag, value);
+    else searchParams.delete(flag);
+  }
+}
