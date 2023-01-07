@@ -1,5 +1,6 @@
-import { Goods } from './components/Goods';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import { Goods } from './components/Goods';
 import { Error } from './components/Error';
 import { Main } from './components/Main';
 import { Article } from './components/Article';

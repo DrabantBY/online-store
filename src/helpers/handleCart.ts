@@ -1,5 +1,6 @@
-import type { CartItem, CartProduct } from '../types';
 import goods from '../goods.json';
+
+import type { CartItem, CartProduct } from '../types';
 
 export const removeFromCart = (cartState: CartItem[], id: number) => cartState.filter((item) => item.id !== id);
 

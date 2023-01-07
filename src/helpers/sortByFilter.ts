@@ -1,4 +1,5 @@
 import type { Product } from '../types';
+
 export const sortByFilter = (goods: Product[], value: string | undefined) => {
   if (!value) return goods;
 

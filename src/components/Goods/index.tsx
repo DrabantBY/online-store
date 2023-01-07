@@ -1,5 +1,6 @@
-import goods from '../../goods.json';
 import { useMemo } from 'react';
+
+import goods from '../../goods.json';
 
 import { ArticleList } from '../ArticleList';
 import { CheckBoxFilter } from '../Filters/CheckBoxFilter';

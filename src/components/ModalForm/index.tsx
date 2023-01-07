@@ -4,17 +4,9 @@ import useLocalStorageState from 'use-local-storage-state';
 import { useNavigate } from 'react-router-dom';
 import { SiVisa } from 'react-icons/si';
 import { SiMastercard } from 'react-icons/si';
-import './style.scss';
 
-type FormValues = {
-  fullName: string;
-  email: string;
-  phone: string;
-  address: string;
-  cardNumber: string;
-  cardDate: string;
-  cardCode: string;
-};
+import type { FormValues } from '../../types';
+import './style.scss';
 
 export const ModalForm = (props: { onClose: () => void }) => {
   const [counter, setCounter] = useState(5);
@@ -84,12 +76,13 @@ export const ModalForm = (props: { onClose: () => void }) => {
             <input
               {...register('fullName', {
                 required: 'required',
-                pattern: { value: /^\w{3,}\s\w{3,}$/i, message: 'Invalid full name' },
+                pattern: { value: /^(\w{3,}\s)+\w{3,}$/i, message: 'Invalid full name' },
               })}
               placeholder="full name"
             />
             {errors?.fullName && <span>{errors.fullName.message}</span>}
           </div>
+
           <div className="modal__field">
             <input
               {...register('email', {
@@ -100,6 +93,7 @@ export const ModalForm = (props: { onClose: () => void }) => {
             />
             {errors?.email && <span>{errors.email.message}</span>}
           </div>
+
           <div className="modal__field">
             <input
               {...register('phone', {
@@ -110,6 +104,7 @@ export const ModalForm = (props: { onClose: () => void }) => {
             />
             {errors?.phone && <span>{errors.phone.message}</span>}
           </div>
+
           <div className="modal__field">
             <input
               {...register('address', {
@@ -132,6 +127,7 @@ export const ModalForm = (props: { onClose: () => void }) => {
                 ) : null}
               </p>
             </div>
+
             <div className="card__field">
               <input
                 {...register('cardNumber', {
@@ -147,6 +143,7 @@ export const ModalForm = (props: { onClose: () => void }) => {
               />
               {errors?.cardNumber && <span>{errors.cardNumber.message}</span>}
             </div>
+
             <div className="card__field">
               <input
                 {...register('cardDate', {

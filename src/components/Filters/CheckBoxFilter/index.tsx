@@ -1,7 +1,8 @@
-import type { Product } from '../../../types';
 import goods from '../../../goods.json';
 import { getGoodsAmountByLabels } from '../../../utils/getGoodsAmountByLabels';
 import { CheckBoxField } from '../CheckBoxField';
+
+import type { Product } from '../../../types';
 import './styles.scss';
 
 export const CheckBoxFilter = (props: { currentGoods: Product[]; flag: 'category' | 'brand' }) => {

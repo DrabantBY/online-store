@@ -1,5 +1,6 @@
-import type { Product, QueryParams } from '../types';
 import { sortByFilter } from '../helpers/sortByFilter';
+
+import type { Product, QueryParams } from '../types';
 
 const filterByCategory = (article: Product, value: string | undefined) =>
   !value || value.split('~').includes(article.category);

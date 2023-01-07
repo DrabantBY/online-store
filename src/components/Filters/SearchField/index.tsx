@@ -1,6 +1,7 @@
-import { useQueryParams } from '../../../hooks/useQueryParams';
 import { useState, useEffect } from 'react';
 import { BsSearch } from 'react-icons/bs';
+
+import { useQueryParams } from '../../../hooks/useQueryParams';
 import './styles.scss';
 
 export const SearchField = () => {

@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
-import type { CartItem } from '../../types';
 import useLocalStorageState from 'use-local-storage-state';
-import { getFromCart } from '../../helpers/handleCart';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+
+import { getFromCart } from '../../helpers/handleCart';
+
+import type { CartItem } from '../../types';
 import './styles.scss';
 
 export const Header = () => {

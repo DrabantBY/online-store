@@ -1,10 +1,12 @@
-import type { CartItem } from '../../../types';
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useLocalStorageState from 'use-local-storage-state';
+
 import { getFromCart } from '../../../helpers/handleCart';
 import { isValidPromoCode } from '../../../helpers/isValidPromoCode';
 import { ModalForm } from '../../ModalForm';
+
+import type { CartItem } from '../../../types';
 import './styles.scss';
 
 export const CartPromo = () => {

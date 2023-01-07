@@ -1,7 +1,14 @@
 import { useSearchParams } from 'react-router-dom';
+
 import { updateCategoryBrandParams } from '../utils/updateCategoryBrandParams';
 import { getQueryParams } from '../utils/getQueryParams';
-import { QueryParams, Params } from '../types';
+import { QueryParams } from '../types';
+export class Params {
+  static update<T extends string>(searchParams: URLSearchParams, flag: T, value: T) {
+    if (value) searchParams.set(flag, value);
+    else searchParams.delete(flag);
+  }
+}
 
 export const useQueryParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();

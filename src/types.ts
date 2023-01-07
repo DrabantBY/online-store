@@ -33,9 +33,12 @@ export interface CartProduct {
   index: number;
 }
 
-export class Params {
-  static update(searchParams: URLSearchParams, flag: string, value: string) {
-    if (value) searchParams.set(flag, value);
-    else searchParams.delete(flag);
-  }
-}
+export type FormValues = {
+  fullName: string;
+  email: string;
+  phone: string;
+  address: string;
+  cardNumber: string;
+  cardDate: string;
+  cardCode: string;
+};

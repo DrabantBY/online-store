@@ -1,10 +1,13 @@
-import type { Product, CartItem } from '../../types';
 import { Link } from 'react-router-dom';
-import { useQueryParams } from '../../hooks/useQueryParams';
 import useLocalStorageState from 'use-local-storage-state';
-import styles from './styles.module.scss';
+
+import { useQueryParams } from '../../hooks/useQueryParams';
 import { addToCart, removeFromCart, isInCart } from '../../helpers/handleCart';
 import { Article } from '../Article';
+
+import styles from './styles.module.scss';
+
+import type { Product, CartItem } from '../../types';
 import './article-list.scss';
 
 export const ArticleList = (props: { goods: Product[] }) => {

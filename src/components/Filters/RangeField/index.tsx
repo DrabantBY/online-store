@@ -1,9 +1,11 @@
 import ReactSlider from 'react-slider';
 import { useMemo } from 'react';
+
 import { useQueryParams } from '../../../hooks/useQueryParams';
 import { Product } from '../../../types';
 import { getMinMaxValue } from '../../../helpers/getMinMaxValue';
 import goods from '../../../goods.json';
+
 import styles from './styles.module.scss';
 
 export const RangeField = (props: { currentGoods: Product[]; flag: 'price' | 'rating' }) => {
