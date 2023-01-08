@@ -1,6 +1,6 @@
 import goods from '../goods.json';
 
-import type { CartItem, CartProduct } from '../types';
+import type { CartItem, CartProduct, Product } from '../types';
 
 export const removeFromCart = (cartState: CartItem[], id: number) => cartState.filter((item) => item.id !== id);
 
@@ -43,7 +43,7 @@ export const getGoodsCartPerPage = (cartState: CartItem[] | null, page: number, 
   const startSlicePoint = slicePoint - limit;
 
   const goodsCart = cartState.map((item, index) => {
-    const article = goods.find((article) => article.id === item.id)!;
+    const article = goods.find((article) => article.id === item.id) as Product;
     const { amount } = item;
     return { article, amount, index };
   });

@@ -13,7 +13,7 @@ export const RangeField = (props: { currentGoods: Product[]; flag: 'price' | 'ra
   const [minValue, maxValue] = useMemo(() => getMinMaxValue(currentGoods, flag), [currentGoods, flag]);
   const [min, max] = useMemo(() => getMinMaxValue(goods, flag), [flag]);
   const { getRangeFilterValues, setQueryParams } = useQueryParams();
-  let values = getRangeFilterValues(flag);
+  const values = getRangeFilterValues(flag);
 
   return (
     <div className={styles.slider}>

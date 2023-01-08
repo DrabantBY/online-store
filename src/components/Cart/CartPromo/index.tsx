@@ -45,7 +45,7 @@ export const CartPromo = () => {
       </p>
       <form onSubmit={handleSubmit} className="promo-form">
         <label>
-          <span>Promotion code:</span>
+          <span>Promotion code: </span>
           <input
             title="promo-code-1, promo-code-2..."
             type="text"

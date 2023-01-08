@@ -3,15 +3,16 @@
   &-block {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
     width: 100%;
+    height: fit-content;
     margin-top: 5px;
     & li {
-      width: 27%;
+      width: 23%;
       background-color: #bdc3c7;
       border-radius: 5px;
       margin-bottom: 5px;
       border: 1px solid grey;
+      margin: 1%;
     }
   }
 
@@ -26,15 +27,24 @@
     }
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .card {
     &-block {
       & li {
-        width: 40%;
+        width: 30%;
       }
     }
     &-list {
       width: 70%;
+    }
+  }
+}
+@media (max-width: 550px) {
+  .card {
+    &-block {
+      & li {
+        width: 45%;
+      }
     }
   }
 }

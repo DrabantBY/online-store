@@ -4,7 +4,7 @@ export const updateCategoryBrandParams = (searchParams: URLSearchParams, flag: s
     return;
   }
 
-  const params = decodeURI(searchParams.get(flag)!).split('~');
+  const params = decodeURI(searchParams.get(flag) as string).split('~');
 
   if (params.includes(value)) {
     if (params.length === 1) {

@@ -1,5 +1,6 @@
 {
-  "extends": ["react-app", "react-app/jest"],
+  "extends": ["react-app", "react-app/jest", "plugin:@typescript-eslint/recommended"],
+
   "rules": {
     "no-console": "warn",
     "import/order": [
