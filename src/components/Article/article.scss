@@ -143,6 +143,10 @@
     .article-description {
       @extend %Heading18RegularText;
       margin-top: 10px;
+      overflow: auto;
+    }
+    .article-description::-webkit-scrollbar {
+      width: 0;
     }
 
     .article-container-button {
@@ -237,6 +241,13 @@
           .article-container-title {
             align-items: flex-end;
             flex-direction: row;
+            overflow: hidden;
+            .article-title {
+              font-size: 12px;
+            }
+            .article-brand {
+              font-size: 7px;
+            }
           }
         }
 

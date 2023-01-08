@@ -1,25 +1,31 @@
 @import '../../style-import.scss';
+
 .goods {
   display: flex;
-  width: 99vw;
+  width: 99%;
+
   &__sidebar {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: #95A5A6;
+    background-color: #95a5a6;
     padding: 5px;
+
     & > p {
       @extend %Heading18RegularText;
       font-size: 12px;
     }
-    &__notfound{
+
+    &__notfound {
       margin: 10px;
       @extend %Heading24BoldBlack;
     }
   }
-  &__button_reset{
+
+  &__button_reset {
     @extend %button;
-    & span{
+
+    & span {
       font-size: 10px;
     }
   }
