@@ -1,0 +1,101 @@
+@import '../../../style-import.scss';
+.promo{
+  margin-right: 5px;
+  .promo__title {
+    @extend %Heading18RegularText; 
+  }
+  .promo__amount {
+    @extend %Heading18RegularText;
+    font-size: 14px;
+    & span {
+      @extend %Heading24BoldBlack; 
+      font-size: 14px;
+    }
+  }
+  .promo__sum {
+    @extend %Heading18RegularText;
+    font-size: 14px;
+    .old {
+      text-decoration-line: line-through;
+      text-decoration-thickness: 2px;
+      text-decoration-color: rgb(148, 42, 86);
+      margin-right: 5px;
+      font-size: 12px;
+    }  
+    & span {
+      @extend %Heading24BoldBlack; 
+      font-size: 14px;
+    }
+  }
+  .promo-form {
+    span {
+      @extend %Heading18RegularText;
+      font-size: 13px;
+    }
+    input {
+      background-color: transparent;
+      outline: 0;
+      border: 2px solid #677374;
+      @extend %Heading18RegularText;
+      font-size: 12px;
+      margin-right: 5px;
+      border-radius: 5px;
+      padding-left: 5px;
+    }
+    input:focus {
+      border: 2px solid #538083;
+      box-shadow: 0 0 1px 1px rgb(114, 132, 150);
+      outline: 0;
+      background-color: transparent;
+    }
+    button {
+      background-color: transparent;
+      border: 2px solid #677374;
+      cursor: pointer;
+      border-radius: 5px;
+      & span {
+        @extend %Heading18RegularText;
+        font-size: 12px;
+        padding: 0px 5px 0px 5px;
+      }
+    }
+    button:hover {
+      border: 2px solid #538083;
+    }
+    button:active {
+      border: 2px solid #538083;
+      box-shadow: 0 0 1px 1px rgb(114, 132, 150);
+    }
+  }
+  .promo-code-actual {
+    @extend %Heading18RegularText;
+    font-size: 15px;
+    & li {
+      margin-top: 5px;
+    }
+    & button {
+      @extend %button;
+      padding: 2px 5px 2px 5px;
+      margin-left: 5px;
+      & span {
+        font-size: 10px;
+      }
+    }
+  }
+  .button-buy{
+    margin-top: 5px;
+    @extend %button;
+    background-color: cornflowerblue;
+    & span {
+      font-size: 14px;
+    }
+  }
+}
+@media (max-width: 940px) {
+  .promo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 20px;
+  } 
+}

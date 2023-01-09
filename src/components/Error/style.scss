@@ -1,0 +1,29 @@
+@import '../../style-import.scss';
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 95vw;
+  height: 60vh;
+  .error-text {
+    @extend %Heading24BoldBlack;
+  }
+  .error-button-back {
+    margin-top: 10px;
+    @extend %button;
+  }
+}
+@media (max-width: 500px) {
+  .error-container {
+    .error-text {
+      font-size: 15px
+    }
+    .error-button-back {
+      @extend %button;
+      & span {
+        font-size: 13px;
+      }
+    }
+  }
+}

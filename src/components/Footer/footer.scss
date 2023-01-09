@@ -1,0 +1,16 @@
+@import '../../style-import.scss';
+.footer {
+  background-color: #34495e;
+  height: 30px;
+  .footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    .footer-logo-rss{
+      height: 20px;
+    }
+    .footer-text{
+      @extend %Heading18Light;
+    }
+  }
+}

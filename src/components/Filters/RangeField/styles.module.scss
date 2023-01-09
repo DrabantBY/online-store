@@ -1,0 +1,41 @@
+.slider {
+  &Title {
+    margin-bottom: 1rem;
+  }
+
+  &Body {
+    margin-bottom: 2.5rem;
+  }
+
+  &Track {
+    background-color: #34495E;
+    border-radius: 0.5rem;
+    height: 0.5rem;
+
+    &:nth-child(odd) {
+      background-color: #499499;
+    }
+  }
+
+  &Thumb {
+    width: 1.2rem;
+    height: 1.2rem;
+    background: #34495E;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    bottom: -8px;
+    color: red;
+    &:first-child {
+      display: none;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &Value {
+    display: flex;
+    justify-content: space-between;
+  }
+}

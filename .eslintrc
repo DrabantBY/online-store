@@ -1,0 +1,14 @@
+{
+  "extends": ["react-app", "react-app/jest", "plugin:@typescript-eslint/recommended"],
+
+  "rules": {
+    "no-console": "warn",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
+        "newlines-between": "always-and-inside-groups"
+      }
+    ]
+  }
+}

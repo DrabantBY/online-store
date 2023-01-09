@@ -1,0 +1,7 @@
+@import '../../../style-import.scss';
+.button-copy-url{
+  @extend %button;
+  & span{
+    font-size: 10px;
+  }
+}  
